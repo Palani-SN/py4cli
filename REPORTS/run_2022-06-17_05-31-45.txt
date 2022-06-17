@@ -1,0 +1,11 @@
+============================= test session starts =============================
+platform win32 -- Python 3.7.6, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
+rootdir: F:\GitRepos\py4cli
+plugins: anyio-3.5.0, reporter-0.5.2, reporter-html1-0.8.2
+collected 2 items
+
+test_advanced.py .                                                       [ 50%]
+test_basic.py .                                                          [100%]
+
+------ generated report: F:\GitRepos\py4cli\REPORTS\TestCaseResults.html ------
+============================== 2 passed in 1.43s ==============================
