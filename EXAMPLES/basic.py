@@ -1,10 +1,10 @@
 
 import json
 
-from py4cli.base import py4cli_base
+from py4cli.route_cli import cli_router
 
 
-class basic_use(py4cli_base):
+class basic_use(cli_router):
 
     def get_dtypes(self, inp_int: int = 6,
                    inp_float: float = 6.0,
@@ -23,6 +23,7 @@ class basic_use(py4cli_base):
             # "set": inp_set,
             "dict": inp_dict
         }
+        print(output)
         return json.dumps(output, indent=2, sort_keys=True)
 
 
