@@ -6,6 +6,7 @@ from py4cli.route_cli import cli_router
 
 class basic_use(cli_router):
 
+    # gets arguments in respective data types
     def get_dtypes(self, inp_int: int = 6,
                    inp_float: float = 6.0,
                    inp_str: str = "Six",
@@ -30,3 +31,5 @@ class basic_use(cli_router):
 if __name__ == "__main__":
 
     basic_use()
+
+    

@@ -3,7 +3,7 @@ import sys
 import re
 import inspect
 import ast
-
+import pickle
 
 class cli_router():
 
@@ -11,20 +11,41 @@ class cli_router():
 
         derived_class = self.__class__.__name__
         base_class = cli_router.__name__
+        self.returned = None
         if derived_class != base_class:
-            if argv[1].startswith("--"):
-                method_name = argv[1][2:]
+
+            if len(argv) > 1:
+
+                if argv[1].startswith("~"):
+                    method_name = argv[1][1:]
+                else:
+                    raise SyntaxError(
+                        f"function name should precede positional arguments, eg : ~run")
+
+                if not method_name.startswith("_"):
+
+                    method_obj = getattr(self, method_name)
+
+                    if inspect.ismethod(method_obj):
+
+                        sign = inspect.signature(method_obj)
+                        args, kwargs = self.__get_args(argv[2:], sign)
+                        self.returned = method_obj(*args, **kwargs)
+                        if sign.return_annotation == pickle:
+                            print(f"writing pickle file as '{method_name}.pkl'")
+                            with open(f'{method_name}.pkl', 'wb') as handle:
+                                pickle.dump(self.returned, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+                    else:
+                        raise SyntaxError(
+                            f"class {derived_class} derived from {base_class} should have method '{method_name}' defined")
+
+                else:
+                    raise SyntaxError(
+                        f"~{method_name} : not supported, method name should not start with underscore, i.e _ ")
+
             else:
-                raise SyntaxError(
-                    f"function name should precede positional arguments, eg : --run")
-            method_obj = getattr(self, method_name)
-            if inspect.ismethod(method_obj):
-                args, kwargs = self.__get_args(
-                    argv[2:], inspect.signature(method_obj))
-                method_obj(*args, **kwargs)
-            else:
-                raise SyntaxError(
-                    f"class {derived_class} derived from {base_class} should have method 'run' defined")
+                self._help()
         else:
             raise SyntaxError(
                 f"{base_class} should be used as parent class only")
@@ -69,6 +90,83 @@ class cli_router():
                     args.append(arg_val)
 
         return args, kwargs
+
+    def __func(self, name, obj):
+
+        print(f" > ~{name} ")
+        print(f" |    ")
+
+        func_comments = inspect.getcomments(obj)
+        if func_comments:
+            print(" |  Description :")
+            print(f" |    ")
+            comments = func_comments.splitlines()
+            if len(comments) == 1:
+                print(f" |    { comments[0].replace('#', '').strip() }  ")
+            else:
+                print(f" |    { comments[0].replace('#', '').strip() }  ")
+                for i in range(1,len(comments)-1):
+                    print(f" |    { comments[i].replace('#', '').strip() } ")
+                print(f" |    { comments[-1].replace('#', '').strip() }  ")
+            print(f" |    ")
+
+        sign = inspect.signature(obj)
+        args = [str(val) for var, val in sign.parameters.items()]
+        if args:
+            print(" |  Arguments :")
+            print(f" |    ")
+            for arg in args:
+                print(f" |   -{arg}")
+            print(f" |    ")
+
+        func_docs = inspect.getdoc(obj)
+        if func_docs:
+            print(" |  Usage :")
+            print(f" |    ")
+            docs = func_docs.splitlines()
+            if len(docs) == 1:
+                print(f" |    { docs[0].strip() }  ")
+            else:
+                print(f" |    { docs[0].strip() }  ")
+                for i in range(1,len(docs)-1):
+                    print(f" |    { docs[i].strip() } ")
+                print(f" |    { docs[-1].strip() }  ")
+            print(f" |    ")
+
+        if sign.return_annotation != sign.empty:
+            if sign.return_annotation == pickle:
+                print(f" | -> {sign.return_annotation.__name__} (Writable as '{name}.pkl')")
+            elif sign.return_annotation == None:
+                print(f" | -> {None} (Returnable)")
+            else:
+                print(f" | -> {sign.return_annotation.__name__} (Returnable)")
+
+        # print(inspect.getdoc(obj))
+        # return {
+        #     "comment": comment.rstrip('\n') if comment else None,
+        #     "docs": inspect.getdoc(obj),
+        #     "args": [str(val) for var, val in sign.parameters.items()],
+        #     "ret": sign.return_annotation.__name__ if sign.return_annotation else None
+        # }
+
+    def _help(self, func: str = None):
+
+        if func:
+            
+            func_obj = getattr(self, func)
+            if inspect.ismethod(func_obj):
+                print()
+                self.__func(func, func_obj)
+        else:
+            method_list = filter(
+                lambda tup: not tup[0].startswith("_"),
+                inspect.getmembers(self, predicate=inspect.ismethod)
+            )
+            print()
+            for name, obj in method_list:
+                self.__func(name, obj)
+                print()
+
 
 
 if __name__ == "__main__":
