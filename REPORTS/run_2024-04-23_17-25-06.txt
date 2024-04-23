@@ -1,0 +1,11 @@
+============================= test session starts =============================
+platform win32 -- Python 3.7.16, pytest-6.2.5, py-1.11.0, pluggy-1.2.0
+rootdir: D:\GitRepos\py4cli
+plugins: reporter-0.5.2, reporter-html1-0.8.2
+collected 86 items
+
+test_basic_call.py ...........................................           [ 50%]
+test_basic_os.py ...........................................             [100%]
+
+------ generated report: D:\GitRepos\py4cli\REPORTS\TestCaseResults.html ------
+============================= 86 passed in 4.60s ==============================

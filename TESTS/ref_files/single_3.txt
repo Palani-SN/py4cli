@@ -1,0 +1,25 @@
+['scripts/use_str.py', '-h']
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <str>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_str: str = 'None'
+ |    
+ |  Usage :
+ |    
+ |    inp_str is variable of type <str>  
+ |    any string value can be passed for the argument, while the default is "None" 
+ |    the function returns the same arg value as type <str> 
+ |     
+ |    cmd : 
+ |    1. python basic_usage.py Empty 
+ |    2. python basic_usage.py -inp_str=Empty  
+ |    
+ | -> str (Returnable)
+
+None

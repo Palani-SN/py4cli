@@ -1,0 +1,25 @@
+['scripts/use_float.py', '--help']
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <float>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_float: float = 0.0
+ |    
+ |  Usage :
+ |    
+ |    inp_float is variable of type <float>  
+ |    any floating point value can be passed for the argument, while the default is 0.0 
+ |    the function returns the same arg value as type <float> 
+ |     
+ |    cmd : 
+ |    1. python basic_usage.py 10.0 
+ |    2. python basic_usage.py -inp_float=10.0  
+ |    
+ | -> float (Returnable)
+
+None

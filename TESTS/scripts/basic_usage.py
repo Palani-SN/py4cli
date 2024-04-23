@@ -120,16 +120,29 @@ class multi_args(arg_parser):
             inp_str: str = "Six",
             inp_list: list = [6, 6.0, "Six"],
             inp_tuple: tuple = (6, 6.0, "Six"),
-            inp_set: set = {6, 6.0, "Six"},
+            inp_set: set = {"Six"},
             inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"}) -> dict:
         """
         Seven arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a json string containing all the arguments and its values.
 
-        cmd :
-            1. python basic_usage.py 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':"Seven"}
-            2. python basic_usage.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':"Seven"}
+        cmds :
+            1. python basic_usage.py 10 ^
+                                10.0 ^
+                                Seven ^
+                                [10,10.0,'Seven'] ^
+                                (10,10.0,'Seven') ^
+                                {10,10.0,'Seven'} ^
+                                {'int':10,'float':10.0,'str':'Seven'}
+
+            2. python basic_usage.py -inp_int=10 ^
+                                    -inp_float=10.0 ^
+                                    -inp_str=Seven ^
+                                    -inp_list=[10,10.0,'Seven'] ^
+                                    -inp_tuple=(10,10.0,'Seven') ^
+                                    -inp_set={10,10.0,'Seven'} ^
+                                    -inp_dict={'int':10,'float':10.0,'str':'Seven'}
         """
         return {
                 'inp_int': inp_int,

@@ -9,3 +9,11 @@
 
 # import pytest
 DEBUG = True
+
+import os
+
+if not os.path.exists('res_files'):
+    os.makedirs('res_files', exist_ok=True)
+
+if not os.path.exists('ref_files'):
+    os.makedirs('ref_files', exist_ok=True)

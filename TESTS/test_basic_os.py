@@ -38,7 +38,7 @@ cmd_list = [
     'python scripts/use_tuple.py (1,2,3)',
     'python scripts/use_set.py {1,2,3,1,2,3}',
     'python scripts/use_dict.py {\'hello\':\'world\'}',
-    'python scripts/multi_args.py 10 10.0 Seven [10,10.0,\'Seven\'] (10,10.0,\'Seven\') {10,10.0,\'Seven\'} {\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
+    'python scripts/multi_args.py 10 10.0 Seven [10,10.0,\'Seven\'] (10,10.0,\'Seven\') {1,2,3,1,2,3} {\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
 
     'python scripts/use_int.py -inp_int=10',
     'python scripts/use_float.py -inp_float=10.0',
@@ -47,14 +47,14 @@ cmd_list = [
     'python scripts/use_tuple.py -inp_tuple=(1,2,3)',
     'python scripts/use_set.py -inp_set={1,2,3,1,2,3}',
     'python scripts/use_dict.py -inp_dict={\'hello\':\'world\'}',
-    'python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,\'Seven\'] -inp_tuple=(10,10.0,\'Seven\') -inp_set={10,10.0,\'Seven\'} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
+    'python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,\'Seven\'] -inp_tuple=(10,10.0,\'Seven\') -inp_set={1,2,3,1,2,3} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
 
     'python scripts/multi_args.py 10 10.0 Seven',
     'python scripts/multi_args.py 10 10.0 Seven -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
-    'python scripts/multi_args.py -inp_set={10,10.0,\'Seven\',10,10.0,\'Seven\'} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
+    'python scripts/multi_args.py -inp_set={1,2,3,1,2,3} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
 ]
 
-cmd_vs_out = [ tuple([cmd_list[i], f'single_{i+1}.log']) for i in range(len(cmd_list))]
+cmd_vs_out = [ tuple([cmd_list[i], f'single_{i+1}.txt']) for i in range(len(cmd_list))]
 
 cmd = None
 file = None

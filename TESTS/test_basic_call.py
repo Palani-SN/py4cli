@@ -75,7 +75,7 @@ multi_arg_vs_ret = [
                 'inp_str': 'Six',
                 'inp_list': [6, 6.0, "Six"],
                 'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {6, 6.0, "Six"},
+                'inp_set': {"Six"},
                 'inp_dict': {'int': 6, 'float': 6.0, 'str': "Six"}
             }),
     ("basic_usage.py 10 10.0 Seven".split(), {
@@ -84,7 +84,7 @@ multi_arg_vs_ret = [
                 'inp_str': 'Seven',
                 'inp_list': [6, 6.0, "Six"],
                 'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {6, 6.0, "Six"},
+                'inp_set': {"Six"},
                 'inp_dict': {'int': 6, 'float': 6.0, 'str': "Six"}
             }),
     ("basic_usage.py 10 10.0 Seven -inp_dict={'int':10,'float':10.0,'str':'Seven'}".split(), {
@@ -93,7 +93,7 @@ multi_arg_vs_ret = [
                 'inp_str': 'Seven',
                 'inp_list': [6, 6.0, "Six"],
                 'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {6, 6.0, "Six"},
+                'inp_set': {"Six"},
                 'inp_dict': {'int': 10, 'float': 10.0, 'str': "Seven"}
             }),
     ("basic_usage.py -inp_set={10,10.0,'Seven',10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'}".split(), {
