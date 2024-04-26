@@ -1,3 +1,5 @@
+
 include *.PNG
 include *.txt
 recursive-include TESTS *.py
+recursive-include TESTS/ref_files *.txt
