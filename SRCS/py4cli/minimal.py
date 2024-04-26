@@ -3,6 +3,7 @@ import sys
 import re
 import inspect
 import ast
+import __main__
 
 class arg_parser():
 
@@ -41,7 +42,7 @@ class arg_parser():
             type_casted_value = value
         else:
             raise Exception(
-                f"Unsupported argument data type : {dtype}, try using basic types ([int, float, str, list, tuple, set, dict]) instead")
+                f"Unsupported argument data type : {dtype}, try using basic types (int, float, str, list, tuple, set, dict, bool) instead")
 
         return type_casted_value
 
@@ -145,12 +146,12 @@ class arg_parser():
             print(f" |    ")
             docs = func_docs.splitlines()
             if len(docs) == 1:
-                print(f" |    { docs[0].strip() }  ")
+                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
             else:
-                print(f" |    { docs[0].strip() }  ")
+                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
                 for i in range(1, len(docs)-1):
-                    print(f" |    { docs[i].strip() } ")
-                print(f" |    { docs[-1].strip() }  ")
+                    print(f" |    { docs[i].strip().replace('<__file__>', __main__.__file__) } ")
+                print(f" |    { docs[-1].strip().replace('<__file__>', __main__.__file__) }  ")
             print(f" |    ")
 
         if sign.return_annotation != sign.empty:

@@ -1,0 +1,3 @@
+['scripts/use_bool.py']
+
+False <class 'bool'>

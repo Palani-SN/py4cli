@@ -1,3 +1,0 @@
-['scripts/use_int.py', '-inp_int=10']
-
-10

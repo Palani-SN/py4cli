@@ -1,0 +1,25 @@
+['scripts/use_set.py', '-h']
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <set>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_set: set = {None}
+ |    
+ |  Usage :
+ |    
+ |    inp_set is variable of type <set>  
+ |    any set value can be passed for the argument, while the default is {None} 
+ |    the function returns the same arg value as type <set> 
+ |     
+ |    cmds : 
+ |    1. python scripts/use_set.py {'Empty'} 
+ |    2. python scripts/use_set.py -inp_set={'Empty'}  
+ |    
+ | -> set (Returnable)
+
+None <class 'NoneType'>

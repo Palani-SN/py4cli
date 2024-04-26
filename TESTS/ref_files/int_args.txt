@@ -1,0 +1,3 @@
+['scripts/use_int.py', '10']
+
+10 <class 'int'>

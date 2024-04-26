@@ -13,9 +13,9 @@ class single_int(arg_parser):
         any integer value can be passed for the argument, while the default is 0
         the function returns the same arg value as type <int> 
 
-        cmd :
-            1. python basic_usage.py 10
-            2. python basic_usage.py -inp_int=10
+        cmds :
+            1. python <__file__> 10
+            2. python <__file__> -inp_int=10
         """
         return inp_int
     
@@ -28,9 +28,9 @@ class single_float(arg_parser):
         any floating point value can be passed for the argument, while the default is 0.0
         the function returns the same arg value as type <float> 
 
-        cmd :
-            1. python basic_usage.py 10.0
-            2. python basic_usage.py -inp_float=10.0
+        cmds :
+            1. python <__file__> 10.0
+            2. python <__file__> -inp_float=10.0
         """
         return inp_float
     
@@ -43,9 +43,9 @@ class single_str(arg_parser):
         any string value can be passed for the argument, while the default is "None"
         the function returns the same arg value as type <str> 
 
-        cmd :
-            1. python basic_usage.py Empty
-            2. python basic_usage.py -inp_str=Empty
+        cmds :
+            1. python <__file__> Empty
+            2. python <__file__> -inp_str=Empty
         """
         return inp_str
     
@@ -58,9 +58,9 @@ class single_list(arg_parser):
         any list value can be passed for the argument, while the default is [None]
         the function returns the same arg value as type <list> 
 
-        cmd :
-            1. python basic_usage.py ["Empty"]
-            2. python basic_usage.py -inp_list=["Empty"]
+        cmds :
+            1. python <__file__> ["Empty"]
+            2. python <__file__> -inp_list=["Empty"]
         """
         return inp_list
     
@@ -73,9 +73,9 @@ class single_tuple(arg_parser):
         any tuple value can be passed for the argument, while the default is (None,)
         the function returns the same arg value as type <tuple> 
 
-        cmd :
-            1. python basic_usage.py ("Empty",)
-            2. python basic_usage.py -inp_tuple=("Empty",)
+        cmds :
+            1. python <__file__> ("Empty",)
+            2. python <__file__> -inp_tuple=("Empty",)
         """
         return inp_tuple
     
@@ -88,9 +88,9 @@ class single_set(arg_parser):
         any set value can be passed for the argument, while the default is {None}
         the function returns the same arg value as type <set> 
 
-        cmd :
-            1. python basic_usage.py {'Empty'}
-            2. python basic_usage.py -inp_set={'Empty'}
+        cmds :
+            1. python <__file__> {'Empty'}
+            2. python <__file__> -inp_set={'Empty'}
         """
         return inp_set
     
@@ -100,14 +100,29 @@ class single_dict(arg_parser):
     def parse_args(self, inp_dict: dict = {None:None}) -> dict:
         """
         inp_dict is variable of type <dict>
-        any dict value can be passed for the argument, while the default is zero {None: None}
+        any dict value can be passed for the argument, while the default is {None: None}
         the function returns the same arg value as type <dict> 
 
-        cmd :
-            1. python basic_usage.py {"Empty":"Empty"}
-            2. python basic_usage.py -inp_dict={"Empty":"Empty"}
+        cmds :
+            1. python <__file__> {"Empty":"Empty"}
+            2. python <__file__> -inp_dict={"Empty":"Empty"}
         """
         return inp_dict
+    
+class single_bool(arg_parser):
+
+    # example parse_args template function with single argument of type <bool>
+    def parse_args(self, inp_bool: bool = False) -> bool:
+        """
+        inp_bool is variable of type <bool>
+        any bool value can be passed for the argument, while the default is False
+        the function returns the same arg value as type <dict> 
+
+        cmds :
+            1. python <__file__> True
+            2. python <__file__> -inp_bool=True
+        """
+        return inp_bool
     
 # Multiple arguments example
 
@@ -121,28 +136,16 @@ class multi_args(arg_parser):
             inp_list: list = [6, 6.0, "Six"],
             inp_tuple: tuple = (6, 6.0, "Six"),
             inp_set: set = {"Six"},
-            inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"}) -> dict:
+            inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"},
+            inp_bool: bool = False) -> dict:
         """
         Seven arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a json string containing all the arguments and its values.
 
         cmds :
-            1. python basic_usage.py 10 ^
-                                10.0 ^
-                                Seven ^
-                                [10,10.0,'Seven'] ^
-                                (10,10.0,'Seven') ^
-                                {10,10.0,'Seven'} ^
-                                {'int':10,'float':10.0,'str':'Seven'}
-
-            2. python basic_usage.py -inp_int=10 ^
-                                    -inp_float=10.0 ^
-                                    -inp_str=Seven ^
-                                    -inp_list=[10,10.0,'Seven'] ^
-                                    -inp_tuple=(10,10.0,'Seven') ^
-                                    -inp_set={10,10.0,'Seven'} ^
-                                    -inp_dict={'int':10,'float':10.0,'str':'Seven'}
+            1. python <__file__> 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True
+            2. python <__file__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -151,6 +154,7 @@ class multi_args(arg_parser):
                 'inp_list': inp_list,
                 'inp_tuple': inp_tuple,
                 'inp_set': inp_set,
-                'inp_dict': inp_dict
+                'inp_dict': inp_dict,
+                'inp_bool': inp_bool
             }
         

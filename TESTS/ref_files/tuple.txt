@@ -1,0 +1,3 @@
+['scripts/use_tuple.py']
+
+(None,) <class 'tuple'>

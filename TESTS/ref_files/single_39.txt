@@ -1,3 +1,0 @@
-['scripts/use_dict.py', "-inp_dict={'hello':'world'}"]
-
-{'hello': 'world'}

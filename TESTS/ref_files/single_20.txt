@@ -1,3 +1,0 @@
-['scripts/use_list.py']
-
-[None]
