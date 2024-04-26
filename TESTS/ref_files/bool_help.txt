@@ -1,0 +1,25 @@
+['scripts/use_bool.py', '--help']
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <bool>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is variable of type <bool>  
+ |    any bool value can be passed for the argument, while the default is False 
+ |    the function returns the same arg value as type <dict> 
+ |     
+ |    cmds : 
+ |    1. python scripts/use_bool.py True 
+ |    2. python scripts/use_bool.py -inp_bool=True  
+ |    
+ | -> bool (Returnable)
+
+None <class 'NoneType'>

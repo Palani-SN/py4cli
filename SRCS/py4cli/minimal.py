@@ -1,19 +1,16 @@
+
 import sys
 import re
 import inspect
-import json
 import ast
-# import pickle
-from xml.dom.minidom import parseString
-from dicttoxml import dicttoxml
+import __main__
 
-
-class route_args():
+class arg_parser():
 
     def __init__(self, argv=sys.argv):
 
         def_func_name = 'parse_args'
-        if len(argv) == 1:
+        if len(argv) == 2 and (argv[1] in ['-h', '--help']):
             self.returned = None
             self.__doc(def_func_name)
         else:
@@ -27,10 +24,6 @@ class route_args():
                     print(
                         f"WARNING : '{def_func_name}' returns '{type(self.returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
 
-        # print(args)
-        # print(kwargs)
-        # print(self.returned)
-
     def __func(self, func, args, kwargs):
 
         returned = getattr(self, func)(*args, **kwargs)
@@ -43,13 +36,13 @@ class route_args():
 
         if dtype in [int, float]:
             type_casted_value = dtype(value)
-        elif dtype in [list, tuple, dict, bool]:
+        elif dtype in [list, tuple, dict, bool, set]:
             type_casted_value = ast.literal_eval(value)
         elif dtype in [inspect._empty]:
             type_casted_value = value
         else:
             raise Exception(
-                f"Unsupported argument data type : {dtype}, try using basic types ([int, float, list, tuple, dict]) instead")
+                f"Unsupported argument data type : {dtype}, try using basic types (int, float, str, list, tuple, set, dict, bool) instead")
 
         return type_casted_value
 
@@ -153,12 +146,12 @@ class route_args():
             print(f" |    ")
             docs = func_docs.splitlines()
             if len(docs) == 1:
-                print(f" |    { docs[0].strip() }  ")
+                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
             else:
-                print(f" |    { docs[0].strip() }  ")
+                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
                 for i in range(1, len(docs)-1):
-                    print(f" |    { docs[i].strip() } ")
-                print(f" |    { docs[-1].strip() }  ")
+                    print(f" |    { docs[i].strip().replace('<__file__>', __main__.__file__) } ")
+                print(f" |    { docs[-1].strip().replace('<__file__>', __main__.__file__) }  ")
             print(f" |    ")
 
         if sign.return_annotation != sign.empty:
@@ -167,48 +160,3 @@ class route_args():
             else:
                 print(
                     f" | -> {sign.return_annotation.__name__} (Returnable)")
-
-
-if __name__ == '__main__':
-
-    class arg_ex1(route_args):
-
-        # python minimal.py 3 4.5 Seven [1,2,3,4,5,6] ('hello','world') {'hello':'world'} True
-        # python minimal.py -inp_int=3 -inp_float=4.5 -inp_str=Seven -inp_list=[1,2,3,4,5,6] -int_tuple=('hello','world') -inp_dict={'hello':'world'} -inp_bool=True
-        def parse_args(self, inp_int: int = 6,
-                       inp_float: float = 6.0,
-                       inp_str: str = "Six",
-                       inp_list: list = [6, 6.0, "Six"],
-                       inp_tuple: tuple = (6, 6.0, "Six"),
-                       inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"},
-                       inp_bool: bool = False) -> str:
-            """
-            hello
-            nice
-            now
-            """
-
-            output = {
-                "int": inp_int,
-                "float": inp_float,
-                "str": inp_str,
-                "list": inp_list,
-                "tuple": inp_tuple,
-                "dict": inp_dict,
-                "bool": inp_bool
-            }
-            # sample 1
-            # print(output)
-            # return json.dumps(output, indent=2, sort_keys=True)
-            return output
-
-        # def parse_args(self, a, b: int, c: str = 'hello'):
-
-        #     print(a, b, c)
-        #     return (a, b, c)
-
-        # def parse_args(self, *args: list, **kwargs: dict):
-
-        #     pass
-
-    arg_ex1()

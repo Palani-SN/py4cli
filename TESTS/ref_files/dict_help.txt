@@ -1,0 +1,25 @@
+['scripts/use_dict.py', '--help']
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <dict>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_dict: dict = {None: None}
+ |    
+ |  Usage :
+ |    
+ |    inp_dict is variable of type <dict>  
+ |    any dict value can be passed for the argument, while the default is {None: None} 
+ |    the function returns the same arg value as type <dict> 
+ |     
+ |    cmds : 
+ |    1. python scripts/use_dict.py {"Empty":"Empty"} 
+ |    2. python scripts/use_dict.py -inp_dict={"Empty":"Empty"}  
+ |    
+ | -> dict (Returnable)
+
+None <class 'NoneType'>

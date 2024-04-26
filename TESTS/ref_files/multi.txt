@@ -1,0 +1,25 @@
+['scripts/multi_args.py']
+
+{'Six'}
+
+{
+  "inp_bool": false,
+  "inp_dict": {
+    "float": 6.0,
+    "int": 6,
+    "str": "Six"
+  },
+  "inp_float": 6.0,
+  "inp_int": 6,
+  "inp_list": [
+    6,
+    6.0,
+    "Six"
+  ],
+  "inp_str": "Six",
+  "inp_tuple": [
+    6,
+    6.0,
+    "Six"
+  ]
+} <class 'dict'>

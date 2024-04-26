@@ -1,0 +1,3 @@
+['scripts/use_str.py']
+
+None <class 'str'>
