@@ -99,7 +99,7 @@ output
 
 ```
 
-- The commands specified can be used to alter the values as cli arguments to the script.
+- The commands specified can be used to alter the values as command line arguments to the script.
 
 ```
 output
@@ -138,7 +138,7 @@ output
 
 ## Moderate (in progress)
 
-- Verically scalable version of minimal arg parser, aimed at use case like, hyper parameter tuning.
+- Vertically scalable version of minimal arg parser, aimed at use case like, hyper parameter tuning.
 
 ## Maximal (in progress)
 
