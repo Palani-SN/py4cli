@@ -20,7 +20,7 @@ class arg_parser():
                 func_schema[def_func_name], args_schema[def_func_name])
             if inspect.ismethod(getattr(self, def_func_name)):
                 self.returned = self.__func(def_func_name, args, kwargs)
-                if type(self.returned) != func_schema['ret_type']:
+                if func_schema['ret_type'] != inspect._empty and type(self.returned) != func_schema['ret_type']:
                     print(
                         f"WARNING : '{def_func_name}' returns '{type(self.returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
 
@@ -69,24 +69,19 @@ class arg_parser():
         kwargs = {}
         for key, val in sign.parameters.items():
             if val.default == inspect._empty:
-                kwargs[key] = {'value': '_empty',
+                kwargs[key] = {'value': val.default,
                                'type': val.annotation}
             else:
                 kwargs[key] = {'value': val.default,
                                'type': val.annotation}
             args.append(key)
 
-        if sign.return_annotation == inspect._empty:
-            ret_anno = '_empty'
-        else:
-            ret_anno = sign.return_annotation
-
         func_dict = {
             func_name: {
                 'args': args,
                 'kwargs': kwargs
             },
-            'ret_type': ret_anno
+            'ret_type': sign.return_annotation
         }
         return func_dict
 

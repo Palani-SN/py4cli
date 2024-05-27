@@ -1,5 +1,5 @@
 
-
+import pandas as pd
 from py4cli.minimal import arg_parser
 
 # Single argument examples
@@ -158,3 +158,58 @@ class multi_args(arg_parser):
                 'inp_bool': inp_bool
             }
         
+# Warnings check
+
+class warn_ret_type(arg_parser):
+
+    # example parse_args template function for testing if warning is getting printed.
+    # return type warning will be printed if there is a mismatch between expected dtype and returned dtype.
+    # warning will only be printed and will not halt the execution flow.
+    def parse_args(self, 
+            inp_bool: int = False) -> str:
+        """
+        inp_bool is variable of type <bool>
+        any bool value can be passed for the argument, while the default is False
+        the function returns the same arg value as type <dict> 
+
+        cmds :
+            1. python <__file__> True
+            2. python <__file__> -inp_bool=True
+        """
+        return inp_bool
+    
+class warn_wo_ret_typ_def(arg_parser):
+
+    # example parse_args template function with multiple arguments of different types
+    def parse_args(self, 
+            inp_bool):
+        """
+        inp_bool is variable of type <bool>
+        any bool value can be passed for the argument, while the default is None
+        the function returns the same arg value as type <dict> 
+
+        cmds :
+            1. python <__file__> True
+            2. python <__file__> -inp_bool=True
+        """
+        return inp_bool
+    
+class warn_no_support_typ_arg(arg_parser):
+
+    # example parse_args template function with multiple arguments of different types
+    def parse_args(self, 
+            inp_df: pd.DataFrame) -> None:
+        """
+        example defined for checking if exception is getting raised, will not return any output as the definition is not valid
+        """
+        return inp_df
+    
+class warn_on_arg_order(arg_parser):
+
+    # example parse_args template function with multiple arguments of different types
+    def parse_args(self, 
+            inp_bool1: bool, inp_bool2: bool) -> tuple:
+        """
+        example defined for checking if exception is getting raised, will not return any output as the definition is not valid
+        """
+        return inp_bool1, inp_bool2
