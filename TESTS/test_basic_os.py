@@ -48,8 +48,8 @@ cmd_dict = {
     'dict_h': 'python scripts/use_dict.py -h',
     'dict_help': 'python scripts/use_dict.py --help',
     'dict': 'python scripts/use_dict.py',
-    'dict_args': 'python scripts/use_dict.py {\'hello\':\'world\'}',
-    'dict_kwargs': 'python scripts/use_dict.py -inp_dict={\'hello\':\'world\'}',
+    'dict_args': """python scripts/use_dict.py \"{'hello':'world'}\"""",
+    'dict_kwargs': """python scripts/use_dict.py -inp_dict=\"{'hello':'world'}\"""",
 
     # bool
     'bool_h': 'python scripts/use_bool.py -h',
@@ -66,8 +66,8 @@ cmd_dict = {
     'multi_kwargs': 'python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,\'Seven\'] -inp_tuple=(10,10.0,\'Seven\') -inp_set={1,2,3,1,2,3} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'} -inp_bool=True',
 
     'multi_mix1': 'python scripts/multi_args.py 10 10.0 Seven',
-    'multi_mix2': 'python scripts/multi_args.py 10 10.0 Seven -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
-    'multi_mix3': 'python scripts/multi_args.py -inp_set={1,2,3,1,2,3} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'}',
+    'multi_mix2': """python scripts/multi_args.py 10 10.0 Seven -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
+    'multi_mix3': """python scripts/multi_args.py -inp_set={1,2,3,1,2,3} -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
 }
 
 cmd_vs_out = [ tuple([v, f'{k}.txt']) for k, v in cmd_dict.items() ]

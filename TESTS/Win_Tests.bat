@@ -14,4 +14,4 @@ echo Check Log file ... [ ..\REPORTS\run_%fullstamp%.txt ]
 echo Check Test Execution Results ... [ ..\REPORTS\TestCaseResults.html ]
 echo Check Test Execution Coverage ... [ ..\REPORTS\htmlcov ]
 echo ****************************************************************************************
-pause
+@REM pause
