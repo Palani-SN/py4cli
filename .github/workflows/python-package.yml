@@ -39,5 +39,5 @@ jobs:
       run: |
         cd SRCS/ && export PYTHONPATH=${PWD}
         cd ..
-        cd TESTS/ && pytest
+        cd TESTS/ && pytest -v
         
