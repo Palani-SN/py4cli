@@ -35,7 +35,7 @@ def test_warn_no_support_typ_arg2():
         obj = warn_no_support_typ_arg("basic_usage.py None".split())
     except Exception as err:
         print(str(err))
-        assert re.match("Unsupported argument data type : <(.+)>, try using basic types \\(int, float, str, list, tuple, set, dict, bool\\) instead", str(err))
+        assert re.match("Unsupported argument data type : <(.+)>, try using basic types \\(int, float, str, list, dict, bool\\) instead", str(err))
 
 def test_warn_on_arg_order1(capsys):
 

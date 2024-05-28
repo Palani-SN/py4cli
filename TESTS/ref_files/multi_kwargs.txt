@@ -1,6 +1,4 @@
-['scripts/multi_args.py', '-inp_int=10', '-inp_float=10.0', '-inp_str=Seven', "-inp_list=[10,10.0,'Seven']", "-inp_tuple=(10,10.0,'Seven')", '-inp_set={1,2,3,1,2,3}', "-inp_dict={'int':10,'float':10.0,'str':'Seven'}", '-inp_bool=True']
-
-{1, 2, 3}
+['scripts/multi_args.py', '-inp_int=10', '-inp_float=10.0', '-inp_str=Seven', "-inp_list=[10,10.0,'Seven']", "-inp_dict={'int':10,'float':10.0,'str':'Seven'}", '-inp_bool=True']
 
 {
   "inp_bool": true,
@@ -16,10 +14,5 @@
     10.0,
     "Seven"
   ],
-  "inp_str": "Seven",
-  "inp_tuple": [
-    10,
-    10.0,
-    "Seven"
-  ]
+  "inp_str": "Seven"
 } <class 'dict'>

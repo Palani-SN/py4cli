@@ -1,3 +1,4 @@
+
 import pytest
 import os
 
@@ -30,20 +31,6 @@ cmd_dict = {
     'list_args': 'python scripts/use_list.py [1,2,3]',
     'list_kwargs': 'python scripts/use_list.py -inp_list=[1,2,3]',
 
-    # tuple
-    'tuple_h': 'python scripts/use_tuple.py -h',
-    'tuple_help': 'python scripts/use_tuple.py --help',
-    'tuple': 'python scripts/use_tuple.py',
-    'tuple_args': 'python scripts/use_tuple.py (1,2,3)',
-    'tuple_kwargs': 'python scripts/use_tuple.py -inp_tuple=(1,2,3)',
-
-    # set
-    'set_h': 'python scripts/use_set.py -h',
-    'set_help': 'python scripts/use_set.py --help',
-    'set': 'python scripts/use_set.py',
-    'set_args': 'python scripts/use_set.py {1,2,3,1,2,3}',
-    'set_kwargs': 'python scripts/use_set.py -inp_set={1,2,3,1,2,3}',
-
     # dict
     'dict_h': 'python scripts/use_dict.py -h',
     'dict_help': 'python scripts/use_dict.py --help',
@@ -62,12 +49,12 @@ cmd_dict = {
     'multi_h': 'python scripts/multi_args.py -h',
     'multi_help': 'python scripts/multi_args.py --help',
     'multi': 'python scripts/multi_args.py',
-    'multi_args': 'python scripts/multi_args.py 10 10.0 Seven [10,10.0,\'Seven\'] (10,10.0,\'Seven\') {1,2,3,1,2,3} {\'int\':10,\'float\':10.0,\'str\':\'Seven\'} True',
-    'multi_kwargs': 'python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,\'Seven\'] -inp_tuple=(10,10.0,\'Seven\') -inp_set={1,2,3,1,2,3} -inp_dict={\'int\':10,\'float\':10.0,\'str\':\'Seven\'} -inp_bool=True',
+    'multi_args': """python scripts/multi_args.py 10 10.0 Seven \"[10,10.0,'Seven']\" \"{'int':10,'float':10.0,'str':'Seven'}\" True""",
+    'multi_kwargs': """python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=\"[10,10.0,'Seven']\" -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\" -inp_bool=True""",
 
     'multi_mix1': 'python scripts/multi_args.py 10 10.0 Seven',
     'multi_mix2': """python scripts/multi_args.py 10 10.0 Seven -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
-    'multi_mix3': """python scripts/multi_args.py -inp_set={1,2,3,1,2,3} -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
+    'multi_mix3': """python scripts/multi_args.py -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
 }
 
 cmd_vs_out = [ tuple([v, f'{k}.txt']) for k, v in cmd_dict.items() ]

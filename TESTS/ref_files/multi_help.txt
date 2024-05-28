@@ -12,8 +12,6 @@
  |   -inp_float: float = 6.0
  |   -inp_str: str = 'Six'
  |   -inp_list: list = [6, 6.0, 'Six']
- |   -inp_tuple: tuple = (6, 6.0, 'Six')
- |   -inp_set: set = {'Six'}
  |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
  |   -inp_bool: bool = False
  |    

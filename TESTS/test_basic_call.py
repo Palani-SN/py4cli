@@ -5,8 +5,6 @@ from scripts.basic_usage import single_int
 from scripts.basic_usage import single_float
 from scripts.basic_usage import single_str
 from scripts.basic_usage import single_list
-from scripts.basic_usage import single_tuple
-from scripts.basic_usage import single_set
 from scripts.basic_usage import single_dict
 from scripts.basic_usage import single_bool
 from scripts.basic_usage import multi_args
@@ -43,22 +41,6 @@ list_arg_vs_ret = [
     ("basic_usage.py -inp_list=['Empty']".split(), ['Empty']),
     ]
 
-tuple_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
-    ("basic_usage.py".split(), (None,)),
-    ("basic_usage.py ('Empty',)".split(), ('Empty',)),
-    ("basic_usage.py -inp_tuple=('Empty',)".split(), ('Empty',)),
-    ]
-
-set_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
-    ("basic_usage.py".split(), {None}),
-    ("basic_usage.py {'Empty'}".split(), {'Empty'}),
-    ("basic_usage.py -inp_set={'Empty'}".split(), {'Empty'}),
-    ]
-
 dict_arg_vs_ret = [ 
     ("basic_usage.py -h".split(), None),
     ("basic_usage.py --help".split(), None),
@@ -83,8 +65,6 @@ multi_arg_vs_ret = [
                 'inp_float': 6.0,
                 'inp_str': 'Six',
                 'inp_list': [6, 6.0, "Six"],
-                'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {"Six"},
                 'inp_dict': {'int': 6, 'float': 6.0, 'str': "Six"},
                 'inp_bool': False
             }),
@@ -93,8 +73,6 @@ multi_arg_vs_ret = [
                 'inp_float': 10.0,
                 'inp_str': 'Seven',
                 'inp_list': [6, 6.0, "Six"],
-                'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {"Six"},
                 'inp_dict': {'int': 6, 'float': 6.0, 'str': "Six"},
                 'inp_bool': False
             }),
@@ -103,38 +81,30 @@ multi_arg_vs_ret = [
                 'inp_float': 10.0,
                 'inp_str': 'Seven',
                 'inp_list': [6, 6.0, "Six"],
-                'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {"Six"},
                 'inp_dict': {'int': 10, 'float': 10.0, 'str': "Seven"},
                 'inp_bool': False
             }),
-    ("basic_usage.py -inp_set={10,10.0,'Seven',10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'}".split(), {
+    ("basic_usage.py -inp_dict={'int':10,'float':10.0,'str':'Seven'}".split(), {
                 'inp_int': 6,
                 'inp_float': 6.0,
                 'inp_str': 'Six',
                 'inp_list': [6, 6.0, "Six"],
-                'inp_tuple': (6, 6.0, "Six"),
-                'inp_set': {10, 10.0, "Seven"},
                 'inp_dict': {'int': 10, 'float': 10.0, 'str': "Seven"},
                 'inp_bool': False
             }),
-    ("basic_usage.py 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True".split(), {
+    ("basic_usage.py 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True".split(), {
                 'inp_int': 10,
                 'inp_float': 10.0,
                 'inp_str': 'Seven',
                 'inp_list': [10, 10.0, "Seven"],
-                'inp_tuple': (10, 10.0, "Seven"),
-                'inp_set': {10, 10.0, "Seven"},
                 'inp_dict': {'int': 10, 'float': 10.0, 'str': "Seven"},
                 'inp_bool': True
             }),
-    ("basic_usage.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True".split(), {
+    ("basic_usage.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True".split(), {
                 'inp_int': 10,
                 'inp_float': 10.0,
                 'inp_str': 'Seven',
                 'inp_list': [10, 10.0, "Seven"],
-                'inp_tuple': (10, 10.0, "Seven"),
-                'inp_set': {10, 10.0, "Seven"},
                 'inp_dict': {'int': 10, 'float': 10.0, 'str': "Seven"},
                 'inp_bool': True
             }),
@@ -222,42 +192,6 @@ def test_single_list(arg, ret):
 
     args_in = arg
     OBJ = single_list(args_in)
-    returned = ret
-
-    print("")
-    if returned != OBJ.returned:
-        print(f"{args_in} : Expected({returned}) != Actual({OBJ.returned})")
-    else:
-        print(f"{args_in} : Expected({returned}) == Actual({OBJ.returned})")
-    print("")
-
-@pytest.mark.parametrize("arg, ret", tuple_arg_vs_ret)
-def test_single_tuple(arg, ret):
-
-    global args_in
-    global OBJ
-    global returned
-
-    args_in = arg
-    OBJ = single_tuple(args_in)
-    returned = ret
-
-    print("")
-    if returned != OBJ.returned:
-        print(f"{args_in} : Expected({returned}) != Actual({OBJ.returned})")
-    else:
-        print(f"{args_in} : Expected({returned}) == Actual({OBJ.returned})")
-    print("")
-
-@pytest.mark.parametrize("arg, ret", set_arg_vs_ret)
-def test_single_set(arg, ret):
-
-    global args_in
-    global OBJ
-    global returned
-
-    args_in = arg
-    OBJ = single_set(args_in)
     returned = ret
 
     print("")

@@ -64,35 +64,35 @@ class single_list(arg_parser):
         """
         return inp_list
     
-class single_tuple(arg_parser):
+# class single_tuple(arg_parser):
 
-    # example parse_args template function with single argument of type <tuple>
-    def parse_args(self, inp_tuple: tuple = (None,)) -> tuple:
-        """
-        inp_tuple is variable of type <tuple>
-        any tuple value can be passed for the argument, while the default is (None,)
-        the function returns the same arg value as type <tuple> 
+#     # example parse_args template function with single argument of type <tuple>
+#     def parse_args(self, inp_tuple: tuple = (None,)) -> tuple:
+#         """
+#         inp_tuple is variable of type <tuple>
+#         any tuple value can be passed for the argument, while the default is (None,)
+#         the function returns the same arg value as type <tuple> 
 
-        cmds :
-            1. python <__file__> ("Empty",)
-            2. python <__file__> -inp_tuple=("Empty",)
-        """
-        return inp_tuple
+#         cmds :
+#             1. python <__file__> ("Empty",)
+#             2. python <__file__> -inp_tuple=("Empty",)
+#         """
+#         return inp_tuple
     
-class single_set(arg_parser):
+# class single_set(arg_parser):
 
-    # example parse_args template function with single argument of type <set>
-    def parse_args(self, inp_set: set = {None}) -> set:
-        """
-        inp_set is variable of type <set>
-        any set value can be passed for the argument, while the default is {None}
-        the function returns the same arg value as type <set> 
+#     # example parse_args template function with single argument of type <set>
+#     def parse_args(self, inp_set: set = {None}) -> set:
+#         """
+#         inp_set is variable of type <set>
+#         any set value can be passed for the argument, while the default is {None}
+#         the function returns the same arg value as type <set> 
 
-        cmds :
-            1. python <__file__> {'Empty'}
-            2. python <__file__> -inp_set={'Empty'}
-        """
-        return inp_set
+#         cmds :
+#             1. python <__file__> {'Empty'}
+#             2. python <__file__> -inp_set={'Empty'}
+#         """
+#         return inp_set
     
 class single_dict(arg_parser):
 
@@ -134,8 +134,6 @@ class multi_args(arg_parser):
             inp_float: float = 6.0,
             inp_str: str = "Six",
             inp_list: list = [6, 6.0, "Six"],
-            inp_tuple: tuple = (6, 6.0, "Six"),
-            inp_set: set = {"Six"},
             inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"},
             inp_bool: bool = False) -> dict:
         """
@@ -152,8 +150,6 @@ class multi_args(arg_parser):
                 'inp_float': inp_float,
                 'inp_str': inp_str,
                 'inp_list': inp_list,
-                'inp_tuple': inp_tuple,
-                'inp_set': inp_set,
                 'inp_dict': inp_dict,
                 'inp_bool': inp_bool
             }

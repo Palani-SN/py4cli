@@ -1,7 +1,5 @@
 ['scripts/multi_args.py', '10', '10.0', 'Seven']
 
-{'Six'}
-
 {
   "inp_bool": false,
   "inp_dict": {
@@ -16,10 +14,5 @@
     6.0,
     "Six"
   ],
-  "inp_str": "Seven",
-  "inp_tuple": [
-    6,
-    6.0,
-    "Six"
-  ]
+  "inp_str": "Seven"
 } <class 'dict'>

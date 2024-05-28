@@ -36,13 +36,13 @@ class arg_parser():
 
         if dtype in [int, float]:
             type_casted_value = dtype(value)
-        elif dtype in [list, tuple, dict, bool, set]:
+        elif dtype in [list, dict, bool]:
             type_casted_value = ast.literal_eval(value)
         elif dtype in [inspect._empty]:
             type_casted_value = value
         else:
             raise Exception(
-                f"Unsupported argument data type : {dtype}, try using basic types (int, float, str, list, tuple, set, dict, bool) instead")
+                f"Unsupported argument data type : {dtype}, try using basic types (int, float, str, list, dict, bool) instead")
 
         return type_casted_value
 
