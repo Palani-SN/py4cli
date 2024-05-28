@@ -9,4 +9,4 @@ test_basic_os.py ......................................                  [ 91%]
 test_basic_warn.py .......                                               [100%]
 
 ---- generated report: /mnt/d/GitRepos/py4cli/REPORTS/TestCaseResults.html -----
-============================= 83 passed in 21.66s ==============================
+============================= 83 passed in 16.02s ==============================
