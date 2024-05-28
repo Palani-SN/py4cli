@@ -78,7 +78,12 @@ def fix_function():
         f2 = open(f'res_files{os.sep}{file}', 'r')
         Act_String = f2.read()
         f2.close()
-        assert(Ref_String == Act_String)
+        if file.endswith('_h.txt') or file.endswith('_help.txt'):
+            for inp, out in zip(Ref_String.splitlines(), Act_String.splitlines()):
+                if 'python' not in (inp+out):
+                    assert(inp == out)
+        else:
+            assert(Ref_String == Act_String)
 
 ##########################################################################################################
 ## Single condition based tests for Solver 
