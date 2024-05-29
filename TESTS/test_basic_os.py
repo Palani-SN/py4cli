@@ -4,57 +4,57 @@ import os
 
 cmd_dict = {
     # int
-    'int_h': 'python scripts/use_int.py -h',
-    'int_help': 'python scripts/use_int.py --help',
-    'int': 'python scripts/use_int.py',
-    'int_args': 'python scripts/use_int.py 10',
-    'int_kwargs': 'python scripts/use_int.py -inp_int=10',
+    'int_h': 'python minimal_scripts/use_int.py -h',
+    'int_help': 'python minimal_scripts/use_int.py --help',
+    'int': 'python minimal_scripts/use_int.py',
+    'int_args': 'python minimal_scripts/use_int.py 10',
+    'int_kwargs': 'python minimal_scripts/use_int.py -inp_int=10',
 
     # float
-    'float_h': 'python scripts/use_float.py -h',
-    'float_help': 'python scripts/use_float.py --help',
-    'float': 'python scripts/use_float.py',
-    'float_args': 'python scripts/use_float.py 10.0',
-    'float_kwargs': 'python scripts/use_float.py -inp_float=10.0',
+    'float_h': 'python minimal_scripts/use_float.py -h',
+    'float_help': 'python minimal_scripts/use_float.py --help',
+    'float': 'python minimal_scripts/use_float.py',
+    'float_args': 'python minimal_scripts/use_float.py 10.0',
+    'float_kwargs': 'python minimal_scripts/use_float.py -inp_float=10.0',
 
     # str
-    'str_h': 'python scripts/use_str.py -h',
-    'str_help': 'python scripts/use_str.py --help',
-    'str': 'python scripts/use_str.py',
-    'str_args': 'python scripts/use_str.py hello',
-    'str_kwargs': 'python scripts/use_str.py -inp_str=hello',
+    'str_h': 'python minimal_scripts/use_str.py -h',
+    'str_help': 'python minimal_scripts/use_str.py --help',
+    'str': 'python minimal_scripts/use_str.py',
+    'str_args': 'python minimal_scripts/use_str.py hello',
+    'str_kwargs': 'python minimal_scripts/use_str.py -inp_str=hello',
 
     # list
-    'list_h': 'python scripts/use_list.py -h',
-    'list_help': 'python scripts/use_list.py --help',
-    'list': 'python scripts/use_list.py',
-    'list_args': 'python scripts/use_list.py [1,2,3]',
-    'list_kwargs': 'python scripts/use_list.py -inp_list=[1,2,3]',
+    'list_h': 'python minimal_scripts/use_list.py -h',
+    'list_help': 'python minimal_scripts/use_list.py --help',
+    'list': 'python minimal_scripts/use_list.py',
+    'list_args': 'python minimal_scripts/use_list.py [1,2,3]',
+    'list_kwargs': 'python minimal_scripts/use_list.py -inp_list=[1,2,3]',
 
     # dict
-    'dict_h': 'python scripts/use_dict.py -h',
-    'dict_help': 'python scripts/use_dict.py --help',
-    'dict': 'python scripts/use_dict.py',
-    'dict_args': """python scripts/use_dict.py \"{'hello':'world'}\"""",
-    'dict_kwargs': """python scripts/use_dict.py -inp_dict=\"{'hello':'world'}\"""",
+    'dict_h': 'python minimal_scripts/use_dict.py -h',
+    'dict_help': 'python minimal_scripts/use_dict.py --help',
+    'dict': 'python minimal_scripts/use_dict.py',
+    'dict_args': """python minimal_scripts/use_dict.py \"{'hello':'world'}\"""",
+    'dict_kwargs': """python minimal_scripts/use_dict.py -inp_dict=\"{'hello':'world'}\"""",
 
     # bool
-    'bool_h': 'python scripts/use_bool.py -h',
-    'bool_help': 'python scripts/use_bool.py --help',
-    'bool': 'python scripts/use_bool.py',
-    'bool_args': 'python scripts/use_bool.py True',
-    'bool_kwargs': 'python scripts/use_bool.py -inp_bool=True',
+    'bool_h': 'python minimal_scripts/use_bool.py -h',
+    'bool_help': 'python minimal_scripts/use_bool.py --help',
+    'bool': 'python minimal_scripts/use_bool.py',
+    'bool_args': 'python minimal_scripts/use_bool.py True',
+    'bool_kwargs': 'python minimal_scripts/use_bool.py -inp_bool=True',
 
     # multi-args
-    'multi_h': 'python scripts/multi_args.py -h',
-    'multi_help': 'python scripts/multi_args.py --help',
-    'multi': 'python scripts/multi_args.py',
-    'multi_args': """python scripts/multi_args.py 10 10.0 Seven \"[10,10.0,'Seven']\" \"{'int':10,'float':10.0,'str':'Seven'}\" True""",
-    'multi_kwargs': """python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=\"[10,10.0,'Seven']\" -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\" -inp_bool=True""",
+    'multi_h': 'python minimal_scripts/multi_args.py -h',
+    'multi_help': 'python minimal_scripts/multi_args.py --help',
+    'multi': 'python minimal_scripts/multi_args.py',
+    'multi_args': """python minimal_scripts/multi_args.py 10 10.0 Seven \"[10,10.0,'Seven']\" \"{'int':10,'float':10.0,'str':'Seven'}\" True""",
+    'multi_kwargs': """python minimal_scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=\"[10,10.0,'Seven']\" -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\" -inp_bool=True""",
 
-    'multi_mix1': 'python scripts/multi_args.py 10 10.0 Seven',
-    'multi_mix2': """python scripts/multi_args.py 10 10.0 Seven -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
-    'multi_mix3': """python scripts/multi_args.py -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
+    'multi_mix1': 'python minimal_scripts/multi_args.py 10 10.0 Seven',
+    'multi_mix2': """python minimal_scripts/multi_args.py 10 10.0 Seven -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
+    'multi_mix3': """python minimal_scripts/multi_args.py -inp_dict=\"{'int':10,'float':10.0,'str':'Seven'}\"""",
 }
 
 cmd_vs_out = [ tuple([v, f'{k}.txt']) for k, v in cmd_dict.items() ]

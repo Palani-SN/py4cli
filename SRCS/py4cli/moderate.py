@@ -4,27 +4,57 @@ import re
 import inspect
 import ast
 import __main__
+from collections import OrderedDict
 
 class arg_parser():
 
     def __init__(self, argv=sys.argv):
 
-        def_func_name = 'parse_args'
+        methods = []
+        self.returned = None
+        for name, obj in inspect.getmembers(self, predicate=inspect.ismethod):
+            if not name.startswith('_'):
+                methods.append(name)
+        methods = sorted(methods)
+
         if len(argv) == 2 and (argv[1] in ['-h', '--help']):
-            self.returned = None
-            self.__doc(def_func_name)
+            for method in methods:
+                self.__doc(method)
         else:
-            func_schema = self.__func2schema(def_func_name)
-            args_schema = self.__args2schema(def_func_name, argv[1:])
-            args, kwargs = self.__solve_schema(
-                func_schema[def_func_name], args_schema[def_func_name])
-            if inspect.ismethod(getattr(self, def_func_name)):
-                self.returned = self.__func(def_func_name, args, kwargs)
-                if func_schema['ret_type'] != inspect._empty and type(self.returned) != func_schema['ret_type']:
-                    print(
-                        f"WARNING : '{def_func_name}' returns '{type(self.returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
-            else:
-                raise Exception(f"func name : {def_func_name} is not defined")
+            inp_args = argv[1:]
+            head = 0
+            code_flow = OrderedDict()
+            for i in range(len(inp_args)+1):
+                if (i == len(inp_args)) or (head != i and inp_args[i].startswith("~")):
+                    func_name = inp_args[head][1:]
+                    func_args = inp_args[(head+1):i]
+                    code_flow[func_name] = func_args
+                    head = i
+
+            def_set = set(methods)
+            inv_set = set(code_flow.keys())
+            if not inv_set.issubset(def_set):
+                raise Exception(f"Undefined func names : {list(inv_set-def_set)}, try using defined func names {methods} instead")
+
+            self.returned = {}
+            for func, argv in code_flow.items():
+                self.returned[func] = self.__solve_func(func, argv)
+
+    def __solve_func(self, func_name, inp_args):
+
+        returned = None
+        func_schema = self.__func2schema(func_name)
+        args_schema = self.__args2schema(func_name, inp_args)
+        args, kwargs = self.__solve_schema(
+            func_schema[func_name], args_schema[func_name])
+        if inspect.ismethod(getattr(self, func_name)):
+            returned = self.__func(func_name, args, kwargs)
+            if func_schema['ret_type'] != inspect._empty and type(returned) != func_schema['ret_type']:
+                print(
+                    f"WARNING : '{func_name}' returns '{type(returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
+        else:
+            raise Exception(f"func name : {func_name} is not defined")
+        return returned
 
     def __func(self, func, args, kwargs):
 

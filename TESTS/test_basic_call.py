@@ -1,13 +1,13 @@
 import pytest
 
 #single args import 
-from scripts.basic_usage import single_int
-from scripts.basic_usage import single_float
-from scripts.basic_usage import single_str
-from scripts.basic_usage import single_list
-from scripts.basic_usage import single_dict
-from scripts.basic_usage import single_bool
-from scripts.basic_usage import multi_args
+from minimal_scripts.basic_usage import single_int
+from minimal_scripts.basic_usage import single_float
+from minimal_scripts.basic_usage import single_str
+from minimal_scripts.basic_usage import single_list
+from minimal_scripts.basic_usage import single_dict
+from minimal_scripts.basic_usage import single_bool
+from minimal_scripts.basic_usage import multi_args
 
 int_arg_vs_ret = [ 
     ("basic_usage.py -h".split(), None),

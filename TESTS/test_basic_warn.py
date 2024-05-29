@@ -1,9 +1,9 @@
 
 import re
-from scripts.basic_usage import warn_ret_type
-from scripts.basic_usage import warn_wo_ret_typ_def
-from scripts.basic_usage import warn_no_support_typ_arg
-from scripts.basic_usage import warn_on_arg_order
+from minimal_scripts.basic_usage import warn_ret_type
+from minimal_scripts.basic_usage import warn_wo_ret_typ_def
+from minimal_scripts.basic_usage import warn_no_support_typ_arg
+from minimal_scripts.basic_usage import warn_on_arg_order
 
 def test_warn_ret_type1(capsys):
 

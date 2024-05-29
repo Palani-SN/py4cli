@@ -1,13 +1,13 @@
 
 import pandas as pd
-from py4cli.minimal import arg_parser
+from py4cli.moderate import arg_parser
 
-# Single argument examples
+# vertically scaled argument examples
 
-class single_int(arg_parser):
+class vscaled_args(arg_parser):
 
-    # example parse_args template function with single argument of type <int>
-    def parse_args(self, inp_int: int = 0) -> int:
+    # example single_int template function with single argument of type <int>
+    def single_int(self, inp_int: int = 0) -> int:
         """
         inp_int is variable of type <int>
         any integer value can be passed for the argument, while the default is 0
@@ -19,10 +19,8 @@ class single_int(arg_parser):
         """
         return inp_int
     
-class single_float(arg_parser):
-
-    # example parse_args template function with single argument of type <float>
-    def parse_args(self, inp_float: float = 0.0) -> float:
+    # example single_float template function with single argument of type <float>
+    def single_float(self, inp_float: float = 0.0) -> float:
         """
         inp_float is variable of type <float>
         any floating point value can be passed for the argument, while the default is 0.0
@@ -34,10 +32,8 @@ class single_float(arg_parser):
         """
         return inp_float
     
-class single_str(arg_parser):
-
-    # example parse_args template function with single argument of type <str>
-    def parse_args(self, inp_str: str = "None") -> str:
+    # example single_str template function with single argument of type <str>
+    def single_str(self, inp_str: str = "None") -> str:
         """
         inp_str is variable of type <str>
         any string value can be passed for the argument, while the default is "None"
@@ -49,10 +45,8 @@ class single_str(arg_parser):
         """
         return inp_str
     
-class single_list(arg_parser):
-
-    # example parse_args template function with single argument of type <list>
-    def parse_args(self, inp_list: list = [None]) -> list:
+    # example single_list template function with single argument of type <list>
+    def single_list(self, inp_list: list = [None]) -> list:
         """
         inp_list is variable of type <list>
         any list value can be passed for the argument, while the default is [None]
@@ -64,40 +58,8 @@ class single_list(arg_parser):
         """
         return inp_list
     
-# class single_tuple(arg_parser):
-
-#     # example parse_args template function with single argument of type <tuple>
-#     def parse_args(self, inp_tuple: tuple = (None,)) -> tuple:
-#         """
-#         inp_tuple is variable of type <tuple>
-#         any tuple value can be passed for the argument, while the default is (None,)
-#         the function returns the same arg value as type <tuple> 
-
-#         cmds :
-#             1. python <__file__> ("Empty",)
-#             2. python <__file__> -inp_tuple=("Empty",)
-#         """
-#         return inp_tuple
-    
-# class single_set(arg_parser):
-
-#     # example parse_args template function with single argument of type <set>
-#     def parse_args(self, inp_set: set = {None}) -> set:
-#         """
-#         inp_set is variable of type <set>
-#         any set value can be passed for the argument, while the default is {None}
-#         the function returns the same arg value as type <set> 
-
-#         cmds :
-#             1. python <__file__> {'Empty'}
-#             2. python <__file__> -inp_set={'Empty'}
-#         """
-#         return inp_set
-    
-class single_dict(arg_parser):
-
-    # example parse_args template function with single argument of type <dict>
-    def parse_args(self, inp_dict: dict = {None:None}) -> dict:
+    # example single_dict template function with single argument of type <dict>
+    def single_dict(self, inp_dict: dict = {None:None}) -> dict:
         """
         inp_dict is variable of type <dict>
         any dict value can be passed for the argument, while the default is {None: None}
@@ -109,10 +71,8 @@ class single_dict(arg_parser):
         """
         return inp_dict
     
-class single_bool(arg_parser):
-
-    # example parse_args template function with single argument of type <bool>
-    def parse_args(self, inp_bool: bool = False) -> bool:
+    # example single_bool template function with single argument of type <bool>
+    def single_bool(self, inp_bool: bool = False) -> bool:
         """
         inp_bool is variable of type <bool>
         any bool value can be passed for the argument, while the default is False
@@ -124,12 +84,8 @@ class single_bool(arg_parser):
         """
         return inp_bool
     
-# Multiple arguments example
-
-class multi_args(arg_parser):
-
-    # example parse_args template function with multiple arguments of different types
-    def parse_args(self, 
+    # example multi_args template function with multiple arguments of different types
+    def multi_args(self, 
             inp_int: int = 6,
             inp_float: float = 6.0,
             inp_str: str = "Six",
@@ -153,15 +109,11 @@ class multi_args(arg_parser):
                 'inp_dict': inp_dict,
                 'inp_bool': inp_bool
             }
-        
-# Warnings check
-
-class warn_ret_type(arg_parser):
-
-    # example parse_args template function for testing if warning is getting printed.
+    
+    # example warn_ret_type template function for testing if warning is getting printed.
     # return type warning will be printed if there is a mismatch between expected dtype and returned dtype.
     # warning will only be printed and will not halt the execution flow.
-    def parse_args(self, 
+    def warn_ret_type(self, 
             inp_bool: int = False) -> str:
         """
         inp_bool is variable of type <bool>
@@ -174,10 +126,8 @@ class warn_ret_type(arg_parser):
         """
         return inp_bool
     
-class warn_wo_ret_typ_def(arg_parser):
-
-    # example parse_args template function with multiple arguments of different types
-    def parse_args(self, 
+    # example warn_wo_ret_typ_def template function with multiple arguments of different types
+    def warn_wo_ret_typ_def(self, 
             inp_bool):
         """
         inp_bool is variable of type <bool>
@@ -190,22 +140,32 @@ class warn_wo_ret_typ_def(arg_parser):
         """
         return inp_bool
     
-class warn_no_support_typ_arg(arg_parser):
-
-    # example parse_args template function with multiple arguments of different types
-    def parse_args(self, 
+    # example warn_no_support_typ_arg template function with multiple arguments of different types
+    def warn_no_support_typ_arg(self, 
             inp_df: pd.DataFrame) -> None:
         """
         example defined for checking if exception is getting raised, will not return any output as the definition is not valid
         """
         return inp_df
     
-class warn_on_arg_order(arg_parser):
-
-    # example parse_args template function with multiple arguments of different types
-    def parse_args(self, 
+    # example warn_on_arg_order template function with multiple arguments of different types
+    def warn_on_arg_order(self, 
             inp_bool1: bool, inp_bool2: bool) -> tuple:
         """
         example defined for checking if exception is getting raised, will not return any output as the definition is not valid
         """
         return inp_bool1, inp_bool2
+    
+if __name__ == '__main__':
+
+    import sys
+    import json
+
+    print(sys.argv)
+    obj = vscaled_args()
+    print("")
+    if obj.returned:
+        out_dict = obj.returned.copy()
+        print(json.dumps(out_dict, indent=2, sort_keys=True), type(obj.returned))
+    else:
+        print(obj.returned, type(obj.returned))
