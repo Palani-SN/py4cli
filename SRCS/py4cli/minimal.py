@@ -157,3 +157,5 @@ class arg_parser():
             else:
                 print(
                     f" | -> {sign.return_annotation.__name__} (Returnable)")
+        else:
+            print(f" | -> Any (Returnable)")
