@@ -1,4 +1,4 @@
-['scripts/use_dict.py', '-h']
+['minimal_scripts/use_dict.py', '-h']
 
  | > def parse_args 
  |    
@@ -17,8 +17,8 @@
  |    the function returns the same arg value as type <dict> 
  |     
  |    cmds : 
- |    1. python scripts/use_dict.py {"Empty":"Empty"} 
- |    2. python scripts/use_dict.py -inp_dict={"Empty":"Empty"}  
+ |    1. python minimal_scripts/use_dict.py {"Empty":"Empty"} 
+ |    2. python minimal_scripts/use_dict.py -inp_dict={"Empty":"Empty"}  
  |    
  | -> dict (Returnable)
 

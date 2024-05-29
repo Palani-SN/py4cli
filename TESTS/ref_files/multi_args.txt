@@ -1,4 +1,4 @@
-['scripts/multi_args.py', '10', '10.0', 'Seven', "[10,10.0,'Seven']", "{'int':10,'float':10.0,'str':'Seven'}", 'True']
+['minimal_scripts/multi_args.py', '10', '10.0', 'Seven', "[10,10.0,'Seven']", "{'int':10,'float':10.0,'str':'Seven'}", 'True']
 
 {
   "inp_bool": true,

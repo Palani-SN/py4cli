@@ -1,4 +1,4 @@
-['scripts/multi_args.py']
+['minimal_scripts/multi_args.py']
 
 {
   "inp_bool": false,

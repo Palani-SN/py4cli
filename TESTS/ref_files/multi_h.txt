@@ -1,4 +1,4 @@
-['scripts/multi_args.py', '-h']
+['minimal_scripts/multi_args.py', '-h']
 
  | > def parse_args 
  |    
@@ -22,8 +22,8 @@
  |    the function returns a json string containing all the arguments and its values. 
  |     
  |    cmds : 
- |    1. python scripts/multi_args.py 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True 
- |    2. python scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
+ |    1. python minimal_scripts/multi_args.py 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True 
+ |    2. python minimal_scripts/multi_args.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
  |    
  | -> dict (Returnable)
 

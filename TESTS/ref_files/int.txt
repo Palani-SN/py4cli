@@ -1,3 +1,3 @@
-['scripts/use_int.py']
+['minimal_scripts/use_int.py']
 
 0 <class 'int'>

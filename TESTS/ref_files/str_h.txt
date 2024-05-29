@@ -1,4 +1,4 @@
-['scripts/use_str.py', '-h']
+['minimal_scripts/use_str.py', '-h']
 
  | > def parse_args 
  |    
@@ -17,8 +17,8 @@
  |    the function returns the same arg value as type <str> 
  |     
  |    cmds : 
- |    1. python scripts/use_str.py Empty 
- |    2. python scripts/use_str.py -inp_str=Empty  
+ |    1. python minimal_scripts/use_str.py Empty 
+ |    2. python minimal_scripts/use_str.py -inp_str=Empty  
  |    
  | -> str (Returnable)
 

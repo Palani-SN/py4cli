@@ -1,4 +1,4 @@
-['scripts/use_int.py', '--help']
+['minimal_scripts/use_int.py', '--help']
 
  | > def parse_args 
  |    
@@ -17,8 +17,8 @@
  |    the function returns the same arg value as type <int> 
  |     
  |    cmds : 
- |    1. python scripts/use_int.py 10 
- |    2. python scripts/use_int.py -inp_int=10  
+ |    1. python minimal_scripts/use_int.py 10 
+ |    2. python minimal_scripts/use_int.py -inp_int=10  
  |    
  | -> int (Returnable)
 
