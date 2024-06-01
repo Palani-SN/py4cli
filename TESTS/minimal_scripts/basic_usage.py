@@ -179,3 +179,7 @@ class warn_on_arg_order(arg_parser):
         example defined for checking if exception is getting raised, will not return any output as the definition is not valid
         """
         return inp_bool1, inp_bool2
+    
+class warn_on_undef_parse_args(arg_parser):
+
+    pass

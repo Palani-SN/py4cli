@@ -14,8 +14,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <int> 
 
         cmds :
-            1. python <__file__> 10
-            2. python <__file__> -inp_int=10
+            1. python <__file__> ~<__func__> 10
+            2. python <__file__> ~<__func__> -inp_int=10
         """
         return inp_int
     
@@ -27,8 +27,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <float> 
 
         cmds :
-            1. python <__file__> 10.0
-            2. python <__file__> -inp_float=10.0
+            1. python <__file__> ~<__func__> 10.0
+            2. python <__file__> ~<__func__> -inp_float=10.0
         """
         return inp_float
     
@@ -40,8 +40,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <str> 
 
         cmds :
-            1. python <__file__> Empty
-            2. python <__file__> -inp_str=Empty
+            1. python <__file__> ~<__func__> "Empty"
+            2. python <__file__> ~<__func__> -inp_str="Empty"
         """
         return inp_str
     
@@ -53,8 +53,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <list> 
 
         cmds :
-            1. python <__file__> ["Empty"]
-            2. python <__file__> -inp_list=["Empty"]
+            1. python <__file__> ~<__func__> ['Empty']
+            2. python <__file__> ~<__func__> -inp_list=['Empty']
         """
         return inp_list
     
@@ -66,8 +66,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <dict> 
 
         cmds :
-            1. python <__file__> {"Empty":"Empty"}
-            2. python <__file__> -inp_dict={"Empty":"Empty"}
+            1. python <__file__> ~<__func__> {'Empty':'Empty'}
+            2. python <__file__> ~<__func__> -inp_dict={'Empty':'Empty'}
         """
         return inp_dict
     
@@ -79,8 +79,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <dict> 
 
         cmds :
-            1. python <__file__> True
-            2. python <__file__> -inp_bool=True
+            1. python <__file__> ~<__func__> True
+            2. python <__file__> ~<__func__> -inp_bool=True
         """
         return inp_bool
     
@@ -98,8 +98,8 @@ class vscaled_args(arg_parser):
         the function returns a json string containing all the arguments and its values.
 
         cmds :
-            1. python <__file__> 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True
-            2. python <__file__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+            1. python <__file__> ~<__func__> 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True
+            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -121,8 +121,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <dict> 
 
         cmds :
-            1. python <__file__> True
-            2. python <__file__> -inp_bool=True
+            1. python <__file__> ~<__func__> True
+            2. python <__file__> ~<__func__> -inp_bool=True
         """
         return inp_bool
     
@@ -135,8 +135,8 @@ class vscaled_args(arg_parser):
         the function returns the same arg value as type <dict> 
 
         cmds :
-            1. python <__file__> True
-            2. python <__file__> -inp_bool=True
+            1. python <__file__> ~<__func__> True
+            2. python <__file__> ~<__func__> -inp_bool=True
         """
         return inp_bool
     

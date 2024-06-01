@@ -45,15 +45,13 @@ class arg_parser():
         returned = None
         func_schema = self.__func2schema(func_name)
         args_schema = self.__args2schema(func_name, inp_args)
-        args, kwargs = self.__solve_schema(
-            func_schema[func_name], args_schema[func_name])
+        args, kwargs = self.__solve_schema(func_name, func_schema[func_name], args_schema[func_name])
         if inspect.ismethod(getattr(self, func_name)):
             returned = self.__func(func_name, args, kwargs)
             if func_schema['ret_type'] != inspect._empty and type(returned) != func_schema['ret_type']:
                 print(
-                    f"WARNING : '{func_name}' returns '{type(returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
-        else:
-            raise Exception(f"func name : {func_name} is not defined")
+                    f"WARNING : '{func_name}' returns '{type(returned)}', but defined to return '{func_schema['ret_type']}'")
+                
         return returned
 
     def __func(self, func, args, kwargs):
@@ -61,36 +59,55 @@ class arg_parser():
         returned = getattr(self, func)(*args, **kwargs)
         return returned
 
-    def __type(self, dtype, value):
+    def __type(self, func_name, var_name, dtype, value):
 
-        if dtype == str:
-            return value
-
-        if dtype in [int, float]:
-            type_casted_value = dtype(value)
-        elif dtype in [list, dict, bool]:
-            type_casted_value = ast.literal_eval(value)
-        elif dtype in [inspect._empty]:
-            type_casted_value = value
+        if dtype in [str, int, float, list, dict, bool, inspect._empty]:
+            casted, casted_value = self.__validate_and_typecast(dtype, value)
+            if casted:
+                type_casted_value = casted_value
+            else:
+                raise ValueError(f"Expected '{dtype}' value for '{var_name}' in kwargs of method '{func_name}', got '{value}' instead")
         else:
-            raise Exception(
-                f"Unsupported argument data type : {dtype}, try using basic types (int, float, str, list, dict, bool) instead")
-
+            raise Exception(f"Unsupported argument data type : '{dtype}', try using basic types (int, float, str, list, dict, bool) instead")
+        
         return type_casted_value
 
-    def __solve_schema(self, func, inps):
+    def __validate_and_typecast(self, dtype, value):
+
+        if dtype == str:
+            return True, value
+
+        if dtype in [int, float]:
+            try:
+                type_casted_value = dtype(value)
+                return True, type_casted_value
+            except ValueError as err:
+                return False, value
+        elif dtype in [list, dict, bool]:
+            try:
+                type_casted_value = ast.literal_eval(value)
+                return (dtype == type(type_casted_value)), type_casted_value
+            except (SyntaxError, ValueError) as err:
+                return False, value
+        elif dtype in [inspect._empty]:
+            type_casted_value = value
+            return True, type_casted_value
+
+    def __solve_schema(self, func_name, func, inps):
 
         mod_args = []
         for i in range(len(inps['args'])):
-            type = func['kwargs'][func['args'][i]]['type']
+            var_name = func['args'][i]
+            type = func['kwargs'][var_name]['type']
             val = inps['args'][i]
-            mod_args.append(self.__type(type, val))
+            mod_args.append(self.__type(func_name, var_name, type, val))
 
         mod_kwargs = {}
         for key, val in inps['kwargs'].items():
+            var_name = key
             type = func['kwargs'][key]['type']
             val = val['value']
-            mod_kwargs[key] = self.__type(type, val)
+            mod_kwargs[key] = self.__type(func_name, var_name, type, val)
 
         return mod_args, mod_kwargs
 
@@ -131,7 +148,7 @@ class arg_parser():
             else:
                 if kwargs_started:
                     raise SyntaxError(
-                        f"positional argument follows keyword argument {key}")
+                        f"positional argument follows keyword argument '{key}'")
                 else:
                     args.append(inp_args[i])
 
@@ -173,12 +190,12 @@ class arg_parser():
             print(f" |    ")
             docs = func_docs.splitlines()
             if len(docs) == 1:
-                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
+                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__, '<__func__>': name}) }  ")
             else:
-                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
+                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__, '<__func__>': name}) }  ")
                 for i in range(1, len(docs)-1):
-                    print(f" |    { docs[i].strip().replace('<__file__>', __main__.__file__) } ")
-                print(f" |    { docs[-1].strip().replace('<__file__>', __main__.__file__) }  ")
+                    print(f" |    { self.__mult_repl(docs[i], {'<__file__>': __main__.__file__, '<__func__>': name}) } ")
+                print(f" |    { self.__mult_repl(docs[-1], {'<__file__>': __main__.__file__, '<__func__>': name}) }  ")
             print(f" |    ")
 
         if sign.return_annotation != sign.empty:
@@ -189,3 +206,12 @@ class arg_parser():
                     f" | -> {sign.return_annotation.__name__} (Returnable)")
         else:
             print(f" | -> Any (Returnable)")
+
+    def __mult_repl(self, str_inp, replacements):
+
+        inp = str_inp.strip()
+        if 'python' in inp:
+            for key, value in replacements.items():
+                inp = inp.replace(key, value)
+
+        return inp

@@ -9,22 +9,28 @@ class arg_parser():
 
     def __init__(self, argv=sys.argv):
 
+        methods = []
+        self.returned = None
+        for name, obj in inspect.getmembers(self, predicate=inspect.ismethod):
+            if not name.startswith('_'):
+                methods.append(name)
+        methods = sorted(methods)
+
         def_func_name = 'parse_args'
-        if len(argv) == 2 and (argv[1] in ['-h', '--help']):
-            self.returned = None
-            self.__doc(def_func_name)
-        else:
-            func_schema = self.__func2schema(def_func_name)
-            args_schema = self.__args2schema(def_func_name, argv[1:])
-            args, kwargs = self.__solve_schema(
-                func_schema[def_func_name], args_schema[def_func_name])
-            if inspect.ismethod(getattr(self, def_func_name)):
+        if def_func_name in methods:
+            if len(argv) == 2 and (argv[1] in ['-h', '--help']):
+                self.returned = None
+                self.__doc(def_func_name)
+            else:
+                func_schema = self.__func2schema(def_func_name)
+                args_schema = self.__args2schema(def_func_name, argv[1:])
+                args, kwargs = self.__solve_schema(func_schema[def_func_name], args_schema[def_func_name])
                 self.returned = self.__func(def_func_name, args, kwargs)
                 if func_schema['ret_type'] != inspect._empty and type(self.returned) != func_schema['ret_type']:
                     print(
                         f"WARNING : '{def_func_name}' returns '{type(self.returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
-            else:
-                raise Exception(f"func name : {def_func_name} is not defined")
+        else:
+            raise Exception(f"func name : '{def_func_name}' is not defined")
 
     def __func(self, func, args, kwargs):
 
@@ -101,7 +107,7 @@ class arg_parser():
             else:
                 if kwargs_started:
                     raise SyntaxError(
-                        f"positional argument follows keyword argument {key}")
+                        f"positional argument follows keyword argument '{key}'")
                 else:
                     args.append(inp_args[i])
 
@@ -143,12 +149,12 @@ class arg_parser():
             print(f" |    ")
             docs = func_docs.splitlines()
             if len(docs) == 1:
-                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
+                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__}) }  ")
             else:
-                print(f" |    { docs[0].strip().replace('<__file__>', __main__.__file__) }  ")
+                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__}) }  ")
                 for i in range(1, len(docs)-1):
-                    print(f" |    { docs[i].strip().replace('<__file__>', __main__.__file__) } ")
-                print(f" |    { docs[-1].strip().replace('<__file__>', __main__.__file__) }  ")
+                    print(f" |    { self.__mult_repl(docs[i], {'<__file__>': __main__.__file__}) } ")
+                print(f" |    { self.__mult_repl(docs[-1], {'<__file__>': __main__.__file__}) }  ")
             print(f" |    ")
 
         if sign.return_annotation != sign.empty:
@@ -159,3 +165,12 @@ class arg_parser():
                     f" | -> {sign.return_annotation.__name__} (Returnable)")
         else:
             print(f" | -> Any (Returnable)")
+
+    def __mult_repl(self, str_inp, replacements):
+
+        inp = str_inp.strip()
+        if 'python' in inp:
+            for key, value in replacements.items():
+                inp = inp.replace(key, value)
+
+        return inp
