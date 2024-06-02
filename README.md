@@ -10,7 +10,6 @@
 
 ```
   python -m pip install py4cli
-  
 ```
 
 ## Minimal
