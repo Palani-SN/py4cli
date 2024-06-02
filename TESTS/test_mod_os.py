@@ -5,6 +5,7 @@ import os
 cmd_dict = {
 
     # help
+    'mod': 'python moderate_scripts/basic_usage.py',
     'mod_h': 'python moderate_scripts/basic_usage.py -h',
     'mod_help': 'python moderate_scripts/basic_usage.py --help',
 

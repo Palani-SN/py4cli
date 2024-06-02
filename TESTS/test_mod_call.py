@@ -4,6 +4,7 @@ import pytest
 from moderate_scripts.basic_usage import vscaled_args
 
 multi_arg_vs_ret = [ 
+    ("basic_usgae.py".split(), None),
     ("basic_usage.py -h".split(), None),
     ("basic_usage.py --help".split(), None),
     ("basic_usage.py ~single_bool True ~single_dict {'Empty':'Empty'} ~single_float 10.0 ~single_int 10 ~single_list ['Empty'] ~single_str Empty".split(), {

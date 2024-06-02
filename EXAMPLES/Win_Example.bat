@@ -2,4 +2,4 @@
 set PYTHONPATH=..\SRCS;%PYTHONPATH%
 echo Running ... [ %* ]
 python %*
-pause
+@REM pause

@@ -5,6 +5,7 @@ import inspect
 import ast
 import __main__
 from collections import OrderedDict
+import json
 
 class arg_parser():
 
@@ -20,6 +21,9 @@ class arg_parser():
         if len(argv) == 2 and (argv[1] in ['-h', '--help']):
             for method in methods:
                 self.__doc(method)
+        elif len(argv) == 1 and argv[0].endswith('.py'):
+            print("Methods available for use, is listed below")
+            print(json.dumps([ f"~{x}" for x in methods], indent=2, sort_keys=True))
         else:
             inp_args = argv[1:]
             head = 0
