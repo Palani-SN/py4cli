@@ -320,8 +320,8 @@ None <class 'NoneType'>
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python use_moderate.py 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
- |    2. python use_moderate.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+ |    1. python use_moderate.py ~multi_args1 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
+ |    2. python use_moderate.py ~multi_args1 -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True 
  |
  | -> dict (Returnable)
 
@@ -347,8 +347,9 @@ None <class 'NoneType'>
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python use_moderate.py 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
- |    2. python use_moderate.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+ |    1. python use_moderate.py ~multi_args2 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
+ |    2. python use_moderate.py ~multi_args2 -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+
  |
  | -> dict (Returnable)
 
@@ -361,8 +362,7 @@ None <class 'NoneType'>
 ```
 output
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py ~multi_args1 100 100.0 "multi_args1 example function call" [1,2,3,4,5,6
-] ~multi_args2 -inp_int=100 -inp_float=100.0 -inp_str="multi_args2 example function call" -inp_list=[1,2,3,4,5,6]
+(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py ~multi_args1 100 100.0 "multi_args1 example function call" [1,2,3,4,5,6] ~multi_args2 -inp_int=100 -inp_float=100.0 -inp_str="multi_args2 example function call" -inp_list=[1,2,3,4,5,6]
 ['use_moderate.py', '~multi_args1', '100', '100.0', 'multi_args1 example function call', '[1,2,3,4,5,6]', '~multi_args2', '-inp_int=100', '-inp_float=100.0', '-inp_str=multi_args2 example function call', '-inp_list=[1,2,3,4,5,6]']
 
 {
