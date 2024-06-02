@@ -1,0 +1,5 @@
+['moderate_scripts/basic_usage.py', '~single_str']
+
+{
+  "single_str": "None"
+} <class 'dict'>

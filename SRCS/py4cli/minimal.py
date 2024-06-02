@@ -28,7 +28,7 @@ class arg_parser():
                 self.returned = self.__func(def_func_name, args, kwargs)
                 if func_schema['ret_type'] != inspect._empty and type(self.returned) != func_schema['ret_type']:
                     print(
-                        f"WARNING : '{def_func_name}' returns '{type(self.returned).__name__}', but defined to return '{func_schema['ret_type'].__name__}'")
+                        f"WARNING : '{def_func_name}' returns '{type(self.returned)}', but defined to return '{func_schema['ret_type']}'")
         else:
             raise Exception(f"func name : '{def_func_name}' is not defined")
 
@@ -37,36 +37,55 @@ class arg_parser():
         returned = getattr(self, func)(*args, **kwargs)
         return returned
 
-    def __type(self, dtype, value):
+    def __type(self, var_name, dtype, value):
+
+        if dtype in [str, int, float, list, dict, bool, inspect._empty]:
+            casted, casted_value = self.__validate_and_typecast(dtype, value)
+            if casted:
+                type_casted_value = casted_value
+            else:
+                raise ValueError(f"Expected '{dtype}' value for '{var_name}' in kwargs of method 'parse_args', got '{value}' instead")
+        else:
+            raise Exception(f"Unsupported argument data type : '{dtype}', try using basic types (int, float, str, list, dict, bool) instead")
+        
+        return type_casted_value
+
+    def __validate_and_typecast(self, dtype, value):
 
         if dtype == str:
-            return value
+            return True, value
 
         if dtype in [int, float]:
-            type_casted_value = dtype(value)
+            try:
+                type_casted_value = dtype(value)
+                return True, type_casted_value
+            except ValueError as err:
+                return False, value
         elif dtype in [list, dict, bool]:
-            type_casted_value = ast.literal_eval(value)
+            try:
+                type_casted_value = ast.literal_eval(value)
+                return (dtype == type(type_casted_value)), type_casted_value
+            except (SyntaxError, ValueError, Exception) as err:
+                return False, value
         elif dtype in [inspect._empty]:
             type_casted_value = value
-        else:
-            raise Exception(
-                f"Unsupported argument data type : {dtype}, try using basic types (int, float, str, list, dict, bool) instead")
-
-        return type_casted_value
+            return True, type_casted_value
 
     def __solve_schema(self, func, inps):
 
         mod_args = []
         for i in range(len(inps['args'])):
-            type = func['kwargs'][func['args'][i]]['type']
+            var_name = func['args'][i]
+            type = func['kwargs'][var_name]['type']
             val = inps['args'][i]
-            mod_args.append(self.__type(type, val))
+            mod_args.append(self.__type(var_name, type, val))
 
         mod_kwargs = {}
         for key, val in inps['kwargs'].items():
+            var_name = key
             type = func['kwargs'][key]['type']
             val = val['value']
-            mod_kwargs[key] = self.__type(type, val)
+            mod_kwargs[key] = self.__type(var_name, type, val)
 
         return mod_args, mod_kwargs
 

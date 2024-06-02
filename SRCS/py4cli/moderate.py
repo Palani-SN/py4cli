@@ -87,7 +87,7 @@ class arg_parser():
             try:
                 type_casted_value = ast.literal_eval(value)
                 return (dtype == type(type_casted_value)), type_casted_value
-            except (SyntaxError, ValueError) as err:
+            except (SyntaxError, ValueError, Exception) as err:
                 return False, value
         elif dtype in [inspect._empty]:
             type_casted_value = value

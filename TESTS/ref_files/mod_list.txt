@@ -1,0 +1,7 @@
+['moderate_scripts/basic_usage.py', '~single_list']
+
+{
+  "single_list": [
+    null
+  ]
+} <class 'dict'>

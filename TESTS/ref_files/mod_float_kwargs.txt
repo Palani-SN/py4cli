@@ -1,0 +1,5 @@
+['moderate_scripts/basic_usage.py', '~single_float', '-inp_float=10.0']
+
+{
+  "single_float": 10.0
+} <class 'dict'>
