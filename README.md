@@ -9,9 +9,8 @@
 - use pip command to install the library, refer pypi page : https://pypi.org/project/py4cli/
 
 ```
-
   python -m pip install py4cli
-
+  
 ```
 
 ## Minimal
@@ -203,7 +202,7 @@ output
 
 ```
 
-## Moderate (in progress)
+## Moderate 
 
 - Vertically scalable version of minimal arg parser, aimed at use case like, hyper parameter tuning.
 - Sample code as shown below can read arguments in specified type as per function signature. (refer **use_moderate.py** under **EXAMPLES/**)
