@@ -1,0 +1,20 @@
+['moderate_scripts/basic_usage.py', '~multi_args', '10', '10.0', 'Seven', "[10,10.0,'Seven']", "{'int':10,'float':10.0,'str':'Seven'}", 'True']
+
+{
+  "multi_args": {
+    "inp_bool": true,
+    "inp_dict": {
+      "float": 10.0,
+      "int": 10,
+      "str": "Seven"
+    },
+    "inp_float": 10.0,
+    "inp_int": 10,
+    "inp_list": [
+      10,
+      10.0,
+      "Seven"
+    ],
+    "inp_str": "Seven"
+  }
+} <class 'dict'>

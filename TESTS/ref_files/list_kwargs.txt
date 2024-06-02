@@ -1,3 +1,0 @@
-['scripts/use_list.py', '-inp_list=[1,2,3]']
-
-[1, 2, 3] <class 'list'>

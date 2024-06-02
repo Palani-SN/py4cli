@@ -1,0 +1,7 @@
+['moderate_scripts/basic_usage.py', '~single_dict']
+
+{
+  "single_dict": {
+    "null": null
+  }
+} <class 'dict'>

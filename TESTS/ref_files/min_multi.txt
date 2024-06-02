@@ -1,0 +1,18 @@
+['minimal_scripts/multi_args.py']
+
+{
+  "inp_bool": false,
+  "inp_dict": {
+    "float": 6.0,
+    "int": 6,
+    "str": "Six"
+  },
+  "inp_float": 6.0,
+  "inp_int": 6,
+  "inp_list": [
+    6,
+    6.0,
+    "Six"
+  ],
+  "inp_str": "Six"
+} <class 'dict'>

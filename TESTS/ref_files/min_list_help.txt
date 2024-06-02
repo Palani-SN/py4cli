@@ -1,0 +1,25 @@
+['minimal_scripts/use_list.py', '--help']
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <list>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_list: list = [None]
+ |    
+ |  Usage :
+ |    
+ |    inp_list is variable of type <list>  
+ |    any list value can be passed for the argument, while the default is [None] 
+ |    the function returns the same arg value as type <list> 
+ |     
+ |    cmds : 
+ |    1. python minimal_scripts/use_list.py ["Empty"] 
+ |    2. python minimal_scripts/use_list.py -inp_list=["Empty"]  
+ |    
+ | -> list (Returnable)
+
+None <class 'NoneType'>

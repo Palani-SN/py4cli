@@ -1,0 +1,5 @@
+['moderate_scripts/basic_usage.py', '~single_int']
+
+{
+  "single_int": 0
+} <class 'dict'>

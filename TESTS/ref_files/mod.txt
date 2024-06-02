@@ -1,0 +1,17 @@
+['moderate_scripts/basic_usage.py']
+Methods available for use, is listed below
+[
+  "~multi_args",
+  "~single_bool",
+  "~single_dict",
+  "~single_float",
+  "~single_int",
+  "~single_list",
+  "~single_str",
+  "~warn_no_support_typ_arg",
+  "~warn_on_arg_order",
+  "~warn_ret_type",
+  "~warn_wo_ret_typ_def"
+]
+
+None <class 'NoneType'>

@@ -1,3 +1,0 @@
-['scripts/use_bool.py', '-inp_bool=True']
-
-True <class 'bool'>

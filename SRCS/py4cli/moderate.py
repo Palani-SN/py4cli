@@ -4,6 +4,8 @@ import re
 import inspect
 import ast
 import __main__
+from collections import OrderedDict
+import json
 
 class arg_parser():
 
@@ -16,35 +18,59 @@ class arg_parser():
                 methods.append(name)
         methods = sorted(methods)
 
-        def_func_name = 'parse_args'
-        if def_func_name in methods:
-            if len(argv) == 2 and (argv[1] in ['-h', '--help']):
-                self.returned = None
-                self.__doc(def_func_name)
-            else:
-                func_schema = self.__func2schema(def_func_name)
-                args_schema = self.__args2schema(def_func_name, argv[1:])
-                args, kwargs = self.__solve_schema(func_schema[def_func_name], args_schema[def_func_name])
-                self.returned = self.__func(def_func_name, args, kwargs)
-                if func_schema['ret_type'] != inspect._empty and type(self.returned) != func_schema['ret_type']:
-                    print(
-                        f"WARNING : '{def_func_name}' returns '{type(self.returned)}', but defined to return '{func_schema['ret_type']}'")
+        if len(argv) == 2 and (argv[1] in ['-h', '--help']):
+            for method in methods:
+                self.__doc(method)
+        elif len(argv) == 1 and argv[0].endswith('.py'):
+            print("Methods available for use, is listed below")
+            print(json.dumps([ f"~{x}" for x in methods], indent=2, sort_keys=True))
         else:
-            raise Exception(f"func name : '{def_func_name}' is not defined")
+            inp_args = argv[1:]
+            head = 0
+            code_flow = OrderedDict()
+            for i in range(len(inp_args)+1):
+                if (i == len(inp_args)) or (head != i and inp_args[i].startswith("~")):
+                    func_name = inp_args[head][1:]
+                    func_args = inp_args[(head+1):i]
+                    code_flow[func_name] = func_args
+                    head = i
+
+            def_set = set(methods)
+            inv_set = set(code_flow.keys())
+            if not inv_set.issubset(def_set):
+                raise Exception(f"Undefined func names : {list(inv_set-def_set)}, try using defined func names {methods} instead")
+
+            self.returned = {}
+            for func, argv in code_flow.items():
+                self.returned[func] = self.__solve_func(func, argv)
+
+    def __solve_func(self, func_name, inp_args):
+
+        returned = None
+        func_schema = self.__func2schema(func_name)
+        args_schema = self.__args2schema(func_name, inp_args)
+        args, kwargs = self.__solve_schema(func_name, func_schema[func_name], args_schema[func_name])
+        if inspect.ismethod(getattr(self, func_name)):
+            returned = self.__func(func_name, args, kwargs)
+            if func_schema['ret_type'] != inspect._empty and type(returned) != func_schema['ret_type']:
+                print(
+                    f"WARNING : '{func_name}' returns '{type(returned)}', but defined to return '{func_schema['ret_type']}'")
+                
+        return returned
 
     def __func(self, func, args, kwargs):
 
         returned = getattr(self, func)(*args, **kwargs)
         return returned
 
-    def __type(self, var_name, dtype, value):
+    def __type(self, func_name, var_name, dtype, value):
 
         if dtype in [str, int, float, list, dict, bool, inspect._empty]:
             casted, casted_value = self.__validate_and_typecast(dtype, value)
             if casted:
                 type_casted_value = casted_value
             else:
-                raise ValueError(f"Expected '{dtype}' value for '{var_name}' in kwargs of method 'parse_args', got '{value}' instead")
+                raise ValueError(f"Expected '{dtype}' value for '{var_name}' in kwargs of method '{func_name}', got '{value}' instead")
         else:
             raise Exception(f"Unsupported argument data type : '{dtype}', try using basic types (int, float, str, list, dict, bool) instead")
         
@@ -71,21 +97,21 @@ class arg_parser():
             type_casted_value = value
             return True, type_casted_value
 
-    def __solve_schema(self, func, inps):
+    def __solve_schema(self, func_name, func, inps):
 
         mod_args = []
         for i in range(len(inps['args'])):
             var_name = func['args'][i]
             type = func['kwargs'][var_name]['type']
             val = inps['args'][i]
-            mod_args.append(self.__type(var_name, type, val))
+            mod_args.append(self.__type(func_name, var_name, type, val))
 
         mod_kwargs = {}
         for key, val in inps['kwargs'].items():
             var_name = key
             type = func['kwargs'][key]['type']
             val = val['value']
-            mod_kwargs[key] = self.__type(var_name, type, val)
+            mod_kwargs[key] = self.__type(func_name, var_name, type, val)
 
         return mod_args, mod_kwargs
 
@@ -168,12 +194,12 @@ class arg_parser():
             print(f" |    ")
             docs = func_docs.splitlines()
             if len(docs) == 1:
-                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__}) }  ")
+                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__, '<__func__>': name}) }  ")
             else:
-                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__}) }  ")
+                print(f" |    { self.__mult_repl(docs[0], {'<__file__>': __main__.__file__, '<__func__>': name}) }  ")
                 for i in range(1, len(docs)-1):
-                    print(f" |    { self.__mult_repl(docs[i], {'<__file__>': __main__.__file__}) } ")
-                print(f" |    { self.__mult_repl(docs[-1], {'<__file__>': __main__.__file__}) }  ")
+                    print(f" |    { self.__mult_repl(docs[i], {'<__file__>': __main__.__file__, '<__func__>': name}) } ")
+                print(f" |    { self.__mult_repl(docs[-1], {'<__file__>': __main__.__file__, '<__func__>': name}) }  ")
             print(f" |    ")
 
         if sign.return_annotation != sign.empty:

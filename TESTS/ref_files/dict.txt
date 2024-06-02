@@ -1,3 +1,0 @@
-['scripts/use_dict.py']
-
-{None: None} <class 'dict'>

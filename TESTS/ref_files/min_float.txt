@@ -1,0 +1,3 @@
+['minimal_scripts/use_float.py']
+
+0.0 <class 'float'>

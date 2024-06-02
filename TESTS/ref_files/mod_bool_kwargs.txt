@@ -1,0 +1,5 @@
+['moderate_scripts/basic_usage.py', '~single_bool', '-inp_bool=True']
+
+{
+  "single_bool": true
+} <class 'dict'>
