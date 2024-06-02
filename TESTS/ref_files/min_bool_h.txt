@@ -14,7 +14,7 @@
  |    
  |    inp_bool is variable of type <bool>  
  |    any bool value can be passed for the argument, while the default is False 
- |    the function returns the same arg value as type <dict> 
+ |    the function returns the same arg value as type <bool> 
  |     
  |    cmds : 
  |    1. python minimal_scripts/use_bool.py True 

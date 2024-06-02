@@ -76,7 +76,7 @@ class vscaled_args(arg_parser):
         """
         inp_bool is variable of type <bool>
         any bool value can be passed for the argument, while the default is False
-        the function returns the same arg value as type <dict> 
+        the function returns the same arg value as type <bool> 
 
         cmds :
             1. python <__file__> ~<__func__> True
@@ -93,13 +93,13 @@ class vscaled_args(arg_parser):
             inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"},
             inp_bool: bool = False) -> dict:
         """
-        Seven arguments of different data type can be passed
+        Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
-        the function returns a json string containing all the arguments and its values.
+        the function returns a dict containing all the arguments and its values.
 
         cmds :
-            1. python <__file__> ~<__func__> 10 10.0 Seven [10,10.0,'Seven'] (10,10.0,'Seven') {10,10.0,'Seven'} {'int':10,'float':10.0,'str':'Seven'} True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_tuple=(10,10.0,'Seven') -inp_set={10,10.0,'Seven'} -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+            1. python <__file__> ~<__func__> 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
+            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -118,7 +118,7 @@ class vscaled_args(arg_parser):
         """
         inp_bool is variable of type <bool>
         any bool value can be passed for the argument, while the default is False
-        the function returns the same arg value as type <dict> 
+        the function returns the same arg value as type <bool> 
 
         cmds :
             1. python <__file__> ~<__func__> True
@@ -126,13 +126,13 @@ class vscaled_args(arg_parser):
         """
         return inp_bool
     
-    # example warn_wo_ret_typ_def template function with multiple arguments of different types
+    # example warn_wo_ret_typ_def template function for checking warnings
     def warn_wo_ret_typ_def(self, 
             inp_bool):
         """
-        inp_bool is variable of type <bool>
-        any bool value can be passed for the argument, while the default is None
-        the function returns the same arg value as type <dict> 
+        inp_bool is specified with no dtype limitations as per definition
+        any bool value can be passed for the argument
+        the function returns the same arg value
 
         cmds :
             1. python <__file__> ~<__func__> True
@@ -140,7 +140,7 @@ class vscaled_args(arg_parser):
         """
         return inp_bool
     
-    # example warn_no_support_typ_arg template function with multiple arguments of different types
+    # example parse_args template function for checking warnings
     def warn_no_support_typ_arg(self, 
             inp_df: pd.DataFrame) -> None:
         """
@@ -148,11 +148,11 @@ class vscaled_args(arg_parser):
         """
         return inp_df
     
-    # example warn_on_arg_order template function with multiple arguments of different types
+    # example parse_args template function for checking warnings
     def warn_on_arg_order(self, 
             inp_bool1: bool, inp_bool2: bool) -> tuple:
         """
-        example defined for checking if exception is getting raised, will not return any output as the definition is not valid
+        example defined for checking if exception is getting raised, in scenarios where arguments order is changed.
         """
         return inp_bool1, inp_bool2
     
