@@ -12,4 +12,4 @@ test_mod_os.py ...........................                               [ 94%]
 test_mod_warn.py .......                                                 [100%]
 
 ---- generated report: /mnt/d/GitRepos/py4cli/REPORTS/TestCaseResults.html -----
-============================= 127 passed in 27.32s =============================
+============================= 127 passed in 56.36s =============================

@@ -144,7 +144,7 @@ class arg_parser():
         kwargs = {}
         kwargs_started = False
         for i in range(len(inp_args)):
-            kwargs_found = re.match("^-(\\S+)=(\\S+)$", inp_args[i])
+            kwargs_found = re.match("^-(\\S+)=(\\S.+)$", inp_args[i])
             if kwargs_found:
                 key, value = kwargs_found.groups()
                 kwargs[key] = {'value': value}
