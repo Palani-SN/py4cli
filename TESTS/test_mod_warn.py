@@ -5,7 +5,7 @@ from moderate_scripts.basic_usage import vscaled_args
 def test_warn_ret_type1():
 
     try:
-        obj = vscaled_args("basic_usage.py ~warn_ret_type -inp_bool=50.456".split())
+        obj = vscaled_args("basic_usage.py ~warn_ret_type -inp_int=50.456".split())
     except Exception as err:
         print(str(err))
         # Expected '{dtype}' value for '{var_name}' in kwargs of method '{func_name}', got '{value}' instead
@@ -13,7 +13,7 @@ def test_warn_ret_type1():
 
 def test_warn_ret_type2(capsys):
 
-    obj = vscaled_args("basic_usage.py ~warn_ret_type -inp_bool=50".split())
+    obj = vscaled_args("basic_usage.py ~warn_ret_type -inp_int=50".split())
     out, err = capsys.readouterr()
     assert re.match("WARNING : '(.+)' returns '(.+)', but defined to return '(.+)'", out)
     assert(50 == obj.returned['warn_ret_type'])

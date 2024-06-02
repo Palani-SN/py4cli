@@ -22,7 +22,7 @@ def test_warn_ret_type2(capsys):
 def test_warn_ret_type3():
 
     try:
-        obj = warn_ret_type("basic_usage.py -inp_bool=50.456".split())
+        obj = warn_ret_type("basic_usage.py -inp_int=50.456".split())
     except Exception as err:
         print(str(err))
         assert re.match("Expected '(.+)' value for '(.+)' in kwargs of method '(.+)', got '(.+)' instead", str(err))

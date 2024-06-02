@@ -132,17 +132,17 @@ class warn_ret_type(arg_parser):
     # return type warning will be printed if there is a mismatch between expected dtype and returned dtype.
     # warning will only be printed and will not halt the execution flow.
     def parse_args(self, 
-            inp_bool: int = False) -> str:
+            inp_int: int = 0) -> str:
         """
-        inp_bool is variable of type <bool>
-        any bool value can be passed for the argument, while the default is False
-        the function returns the same arg value as type <bool> 
+        inp_int is variable of type <int>
+        any int value can be passed for the argument, while the default is 0
+        the function returns the same arg value as type <int> 
 
         cmds :
-            1. python <__file__> True
-            2. python <__file__> -inp_bool=True
+            1. python <__file__> 10
+            2. python <__file__> -inp_int=10
         """
-        return inp_bool
+        return inp_int
     
 class warn_wo_ret_typ_def(arg_parser):
 
