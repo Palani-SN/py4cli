@@ -14,7 +14,7 @@
 
 ## Minimal
 
-- minimal arg parser that can pass on the cli arguments to parse_args class method arguments as per the declarative type definition.
+- minimal arg parser that can pass on the cli arguments to parse_args class method arguments as per the declarative type definition. (works fine on windows & linux)
 - Sample code as shown below can read arguments in specified type as per function signature. (refer **use_minimal.py** under **EXAMPLES/**)
 
 ```python
@@ -39,8 +39,8 @@ class multi_args(arg_parser):
         the function returns a dict containing all the arguments and its values.
 
         cmds :
-            1. python <__file__> 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
-            2. python <__file__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+            1. python <__file__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+            2. python <__file__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -70,8 +70,7 @@ if __name__ == '__main__':
 - To get help on how to use the script, execute **python use_minimal.py -h** or **python use_minimal.py --help** which will generate the doc content based on the comments in script as shown below.
 
 ```output
-
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py --help
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py --help
 ['use_minimal.py', '--help']
 
  | > def parse_args
@@ -96,8 +95,8 @@ if __name__ == '__main__':
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python use_minimal.py 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
- |    2. python use_minimal.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+ |    1. python D:\GitRepos\py4cli\EXAMPLES\use_minimal.py 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+ |    2. python D:\GitRepos\py4cli\EXAMPLES\use_minimal.py -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
  |
  | -> dict (Returnable)
 
@@ -110,7 +109,7 @@ None <class 'NoneType'>
 ```
 output
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py
 ['use_minimal.py']
 
 {
@@ -130,8 +129,8 @@ output
   "inp_str": "Six"
 } <class 'dict'>
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py 100 100.0 "parse args example function call" [1,2,3,4,5,6]
-['use_minimal.py', '100', '100.0', 'parse args example function call', '[1,2,3,4,5,6]']
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py 100 100.0 "parse args example function call" "[1, 2, 3, 4, 5, 6]"
+['use_minimal.py', '100', '100.0', 'parse args example function call', '[1, 2, 3, 4, 5, 6]']
 
 {
   "inp_bool": false,
@@ -153,8 +152,8 @@ output
   "inp_str": "parse args example function call"
 } <class 'dict'>
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py -inp_int=100 -inp_float=100.0 -inp_str="parse args example function call" -inp_list=[1,2,3,4,5,6]
-['use_minimal.py', '-inp_int=100', '-inp_float=100.0', '-inp_str=parse args example function call', '-inp_list=[1,2,3,4,5,6]']
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py -inp_int=100 -inp_float=100.0 -inp_str="parse args example function call" -inp_list="[1, 2, 3, 4, 5, 6]"
+['use_minimal.py', '-inp_int=100', '-inp_float=100.0', '-inp_str=parse args example function call', '-inp_list=[1, 2, 3, 4, 5, 6]']
 
 {
   "inp_bool": false,
@@ -176,8 +175,8 @@ output
   "inp_str": "parse args example function call"
 } <class 'dict'>
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py 100 100.0 -inp_str="parse args example function call" -inp_list=[1,2,3,4,5,6]
-['use_minimal.py', '100', '100.0', '-inp_str=parse args example function call', '-inp_list=[1,2,3,4,5,6]']
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_minimal.py 100 100.0 -inp_str="parse args example function call" -inp_list="[1, 2, 3, 4, 5, 6]"
+['use_minimal.py', '100', '100.0', '-inp_str=parse args example function call', '-inp_list=[1, 2, 3, 4, 5, 6]']
 
 {
   "inp_bool": false,
@@ -227,8 +226,8 @@ class vscaled_args(arg_parser):
         the function returns a dict containing all the arguments and its values.
 
         cmds :
-            1. python <__file__> ~<__func__> 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -253,8 +252,8 @@ class vscaled_args(arg_parser):
         the function returns a dict containing all the arguments and its values.
 
         cmds :
-            1. python <__file__> ~<__func__> 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
+            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -285,7 +284,7 @@ if __name__ == '__main__':
 
 ```output
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py
 ['use_moderate.py']
 Methods available for use, is listed below
 [
@@ -295,7 +294,7 @@ Methods available for use, is listed below
 
 None <class 'NoneType'>
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py --help
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py --help
 ['use_moderate.py', '--help']
 
  | > def multi_args1
@@ -320,8 +319,8 @@ None <class 'NoneType'>
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python use_moderate.py ~multi_args1 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
- |    2. python use_moderate.py ~multi_args1 -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True 
+ |    1. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args1 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+ |    2. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args1 -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
  |
  | -> dict (Returnable)
 
@@ -347,9 +346,8 @@ None <class 'NoneType'>
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python use_moderate.py ~multi_args2 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True
- |    2. python use_moderate.py ~multi_args2 -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True
-
+ |    1. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args2 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+ |    2. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args2 -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
  |
  | -> dict (Returnable)
 
@@ -362,8 +360,8 @@ None <class 'NoneType'>
 ```
 output
 
-(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py ~multi_args1 100 100.0 "multi_args1 example function call" [1,2,3,4,5,6] ~multi_args2 -inp_int=100 -inp_float=100.0 -inp_str="multi_args2 example function call" -inp_list=[1,2,3,4,5,6]
-['use_moderate.py', '~multi_args1', '100', '100.0', 'multi_args1 example function call', '[1,2,3,4,5,6]', '~multi_args2', '-inp_int=100', '-inp_float=100.0', '-inp_str=multi_args2 example function call', '-inp_list=[1,2,3,4,5,6]']
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_moderate.py ~multi_args1 100 100.0 "multi_args1 example function call" "[1, 2, 3, 4, 5, 6]" ~multi_args2 -inp_int=100 -inp_float=100.0 -inp_str="multi_args2 example function call" -inp_list="[1, 2, 3, 4, 5, 6]"
+['use_moderate.py', '~multi_args1', '100', '100.0', 'multi_args1 example function call', '[1, 2, 3, 4, 5, 6]', '~multi_args2', '-inp_int=100', '-inp_float=100.0', '-inp_str=multi_args2 example function call', '-inp_list=[1, 2, 3, 4, 5, 6]']
 
 {
   "multi_args1": {
