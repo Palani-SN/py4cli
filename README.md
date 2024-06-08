@@ -409,3 +409,9 @@ output
 ## Maximal (in progress)
 
 - Horizontally scalable version of minimal arg parser, aimed at use case like, workflow development for testing & debug needs.
+
+## supported in windows & linux :
+
+- The file path will be dynamically adjusted based on platforms
+
+![](https://github.com/Palani-SN/py4cli/blob/main/win_vs_lin.png?raw=true)
