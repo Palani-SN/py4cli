@@ -1,0 +1,21 @@
+{
+    "args": [
+        100,
+        100.0
+    ],
+    "kwargs": {
+        "inp_str": "Hello From JSON",
+        "inp_list": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "inp_dict": {
+            "Hello": "World",
+            "from": "JSON"
+        }
+    }
+}
