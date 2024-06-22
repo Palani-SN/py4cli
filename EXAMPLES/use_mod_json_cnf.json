@@ -1,9 +1,11 @@
 {
-    "multi_args1": {
+    "multi_args7": {
         "args": [100, 100.0],
         "kwargs": {
-            "inp_str": "from JSON",
-            "inp_bool": true
+            "inp_str": "Hello From JSON",
+            "inp_list": [1,2,3,4,5,6],
+            "inp_dict": {"hello": "world"},
+            "inp_bool": "True"
         }
     }
 }

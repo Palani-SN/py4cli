@@ -1,5 +1,5 @@
 
-multi_args7:
+multi_args7: 
   # args: [100, 100.0]
   # kwargs:
   #   inp_str: "Hello from YML, to multi_args7"
@@ -42,12 +42,12 @@ multi_args2:
     inp_dict: { "Hello": "World", "from": "YML" }
     inp_bool: True
 multi_args1:
-  args: [100, 100.0]
-  # kwargs:
-  #   inp_str: "Hello from YML, to multi_args1"
-  #   inp_list: [1, 2, 3, 4, 5, 6]
-  #   inp_dict: { "Hello": "World", "from": "YML" }
-    # inp_bool: True
+  # args: [100, 100.0]
+  # # kwargs:
+  # #   inp_str: "Hello from YML, to multi_args1"
+  # #   inp_list: [1, 2, 3, 4, 5, 6]
+  # #   inp_dict: { "Hello": "World", "from": "YML" }
+  #   inp_bool: True
 
 
 
