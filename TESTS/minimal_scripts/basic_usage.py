@@ -84,9 +84,9 @@ class single_bool(arg_parser):
     # example parse_args template function with single argument of type <bool>
     def parse_args(self, inp_bool: bool = False) -> bool:
         """
-        inp_bool is variable of type <bool>
-        any bool value can be passed for the argument, while the default is False
-        the function returns the same arg value as type <bool> 
+        inp_bool is variable of type <bool>                     
+        any bool value can be passed for the argument, while the default is False                     
+        the function returns the same arg value as type <bool>         
 
         cmds :
             1. python <__file__> True

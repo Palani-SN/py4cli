@@ -22,8 +22,8 @@
  |    the function returns a dict containing all the arguments and its values. 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~multi_args 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True 
- |    2. python moderate_scripts/basic_usage.py ~multi_args -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
+ |        1. python moderate_scripts/basic_usage.py ~multi_args 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True 
+ |        2. python moderate_scripts/basic_usage.py ~multi_args -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
  |    
  | -> dict (Returnable)
 
@@ -44,8 +44,8 @@
  |    the function returns the same arg value as type <bool> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~single_bool True 
- |    2. python moderate_scripts/basic_usage.py ~single_bool -inp_bool=True  
+ |        1. python moderate_scripts/basic_usage.py ~single_bool True 
+ |        2. python moderate_scripts/basic_usage.py ~single_bool -inp_bool=True  
  |    
  | -> bool (Returnable)
 
@@ -66,8 +66,8 @@
  |    the function returns the same arg value as type <dict> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~single_dict {'Empty':'Empty'} 
- |    2. python moderate_scripts/basic_usage.py ~single_dict -inp_dict={'Empty':'Empty'}  
+ |        1. python moderate_scripts/basic_usage.py ~single_dict {'Empty':'Empty'} 
+ |        2. python moderate_scripts/basic_usage.py ~single_dict -inp_dict={'Empty':'Empty'}  
  |    
  | -> dict (Returnable)
 
@@ -88,8 +88,8 @@
  |    the function returns the same arg value as type <float> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~single_float 10.0 
- |    2. python moderate_scripts/basic_usage.py ~single_float -inp_float=10.0  
+ |        1. python moderate_scripts/basic_usage.py ~single_float 10.0 
+ |        2. python moderate_scripts/basic_usage.py ~single_float -inp_float=10.0  
  |    
  | -> float (Returnable)
 
@@ -110,8 +110,8 @@
  |    the function returns the same arg value as type <int> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~single_int 10 
- |    2. python moderate_scripts/basic_usage.py ~single_int -inp_int=10  
+ |        1. python moderate_scripts/basic_usage.py ~single_int 10 
+ |        2. python moderate_scripts/basic_usage.py ~single_int -inp_int=10  
  |    
  | -> int (Returnable)
 
@@ -132,8 +132,8 @@
  |    the function returns the same arg value as type <list> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~single_list ['Empty'] 
- |    2. python moderate_scripts/basic_usage.py ~single_list -inp_list=['Empty']  
+ |        1. python moderate_scripts/basic_usage.py ~single_list ['Empty'] 
+ |        2. python moderate_scripts/basic_usage.py ~single_list -inp_list=['Empty']  
  |    
  | -> list (Returnable)
 
@@ -154,8 +154,8 @@
  |    the function returns the same arg value as type <str> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~single_str "Empty" 
- |    2. python moderate_scripts/basic_usage.py ~single_str -inp_str="Empty"  
+ |        1. python moderate_scripts/basic_usage.py ~single_str "Empty" 
+ |        2. python moderate_scripts/basic_usage.py ~single_str -inp_str="Empty"  
  |    
  | -> str (Returnable)
 
@@ -211,8 +211,8 @@
  |    the function returns the same arg value as type <int> 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~warn_ret_type 10 
- |    2. python moderate_scripts/basic_usage.py ~warn_ret_type -inp_int=10  
+ |        1. python moderate_scripts/basic_usage.py ~warn_ret_type 10 
+ |        2. python moderate_scripts/basic_usage.py ~warn_ret_type -inp_int=10  
  |    
  | -> str (Returnable)
 
@@ -233,8 +233,8 @@
  |    the function returns the same arg value 
  |     
  |    cmds : 
- |    1. python moderate_scripts/basic_usage.py ~warn_wo_ret_typ_def True 
- |    2. python moderate_scripts/basic_usage.py ~warn_wo_ret_typ_def -inp_bool=True  
+ |        1. python moderate_scripts/basic_usage.py ~warn_wo_ret_typ_def True 
+ |        2. python moderate_scripts/basic_usage.py ~warn_wo_ret_typ_def -inp_bool=True  
  |    
  | -> Any (Returnable)
 

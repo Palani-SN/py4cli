@@ -1,0 +1,6 @@
+args: [100, 100.0]
+kwargs:
+  inp_str: "Hello from YML"
+  inp_list: [1, 2, 3, 4, 5, 6]
+  inp_dict: { "Hello": "World", "from": "YML" }
+  inp_bool: True

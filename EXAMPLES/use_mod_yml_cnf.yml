@@ -1,0 +1,57 @@
+
+multi_args7:
+  # args: [100, 100.0]
+  # kwargs:
+  #   inp_str: "Hello from YML, to multi_args7"
+  #   inp_list: [1, 2, 3, 4, 5, 6]
+  #   inp_dict: { "Hello": "World", "from": "YML" }
+  #   inp_bool: True
+multi_args6:
+  args: [100, 100.0]
+  kwargs:
+    inp_str: "Hello from YML, to multi_args6"
+    # inp_list: [1, 2, 3, 4, 5, 6]
+    # inp_dict: { "Hello": "World", "from": "YML" }
+    # inp_bool: True
+multi_args5:
+  # args: [100, 100.0]
+  kwargs:
+    inp_str: "Hello from YML, to multi_args5"
+    inp_list: [1, 2, 3, 4, 5, 6]
+    inp_dict: { "Hello": "World", "from": "YML" }
+    inp_bool: True
+multi_args4:
+  args: [100, 100.0]
+  kwargs:
+    inp_str: "Hello from YML, to multi_args4"
+    # inp_list: [1, 2, 3, 4, 5, 6]
+    inp_dict: { "Hello": "World", "from": "YML" }
+    inp_bool: True
+multi_args3:
+  args: [100, 100.0]
+  kwargs:
+    inp_str: "Hello from YML, to multi_args3"
+    inp_list: [1, 2, 3, 4, 5, 6]
+    # inp_dict: { "Hello": "World", "from": "YML" }
+    inp_bool: True
+multi_args2:
+  args: [100, 100.0]
+  kwargs:
+    # inp_str: "Hello from YML, to multi_args2"
+    inp_list: [1, 2, 3, 4, 5, 6]
+    inp_dict: { "Hello": "World", "from": "YML" }
+    inp_bool: True
+multi_args1:
+  args: [100, 100.0]
+  # kwargs:
+  #   inp_str: "Hello from YML, to multi_args1"
+  #   inp_list: [1, 2, 3, 4, 5, 6]
+  #   inp_dict: { "Hello": "World", "from": "YML" }
+    # inp_bool: True
+
+
+
+
+
+
+

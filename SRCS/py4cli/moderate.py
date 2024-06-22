@@ -5,11 +5,18 @@ import inspect
 import ast
 import __main__
 from collections import OrderedDict
+import pathlib
+from sys import argv
+
+import yaml
+from yaml.loader import SafeLoader
 import json
 
-class arg_parser():
+###### GENERIC PARSER ######
 
-    def __init__(self, argv=sys.argv):
+class gen_parser():
+
+    def __init__(self, inps=sys.argv):
 
         methods = []
         self.returned = None
@@ -18,37 +25,32 @@ class arg_parser():
                 methods.append(name)
         methods = sorted(methods)
 
-        if len(argv) == 2 and (argv[1] in ['-h', '--help']):
+        if len(inps) == 2 and (inps[1] in ['-h', '--help']):
             for method in methods:
                 self.__doc(method)
-        elif len(argv) == 1 and argv[0].endswith('.py'):
+        elif len(inps) == 1 and inps[0].endswith('.py'):
             print("Methods available for use, is listed below")
             print(json.dumps([ f"~{x}" for x in methods], indent=2, sort_keys=True))
         else:
-            inp_args = argv[1:]
-            head = 0
-            code_flow = OrderedDict()
-            for i in range(len(inp_args)+1):
-                if (i == len(inp_args)) or (head != i and inp_args[i].startswith("~")):
-                    func_name = inp_args[head][1:]
-                    func_args = inp_args[(head+1):i]
-                    code_flow[func_name] = func_args
-                    head = i
+            code_flow = self._parse_inps(inps)
+            if code_flow == None or code_flow == {}:
+                print("Methods available for use, is listed below")
+                print(json.dumps([ f"~{x}" for x in methods], indent=2, sort_keys=True))
+            else:
+                def_set = set(methods)
+                inv_set = set(code_flow.keys())
+                if not inv_set.issubset(def_set):
+                    raise Exception(f"Undefined func names : {list(inv_set-def_set)}, try using defined func names {methods} instead")
 
-            def_set = set(methods)
-            inv_set = set(code_flow.keys())
-            if not inv_set.issubset(def_set):
-                raise Exception(f"Undefined func names : {list(inv_set-def_set)}, try using defined func names {methods} instead")
-
-            self.returned = {}
-            for func, argv in code_flow.items():
-                self.returned[func] = self.__solve_func(func, argv)
+                self.returned = {}
+                for func, argv in code_flow.items():
+                    self.returned[func] = self.__solve_func(func, argv)
 
     def __solve_func(self, func_name, inp_args):
 
         returned = None
         func_schema = self.__func2schema(func_name)
-        args_schema = self.__args2schema(func_name, inp_args)
+        args_schema = self._inps2schema(func_name, inp_args)
         args, kwargs = self.__solve_schema(func_name, func_schema[func_name], args_schema[func_name])
         if inspect.ismethod(getattr(self, func_name)):
             returned = self.__func(func_name, args, kwargs)
@@ -78,7 +80,7 @@ class arg_parser():
 
     def __validate_and_typecast(self, dtype, value):
 
-        if dtype == str:
+        if type(value) == dtype:
             return True, value
 
         if dtype in [int, float]:
@@ -110,7 +112,6 @@ class arg_parser():
         for key, val in inps['kwargs'].items():
             var_name = key
             type = func['kwargs'][key]['type']
-            val = val['value']
             mod_kwargs[key] = self.__type(func_name, var_name, type, val)
 
         return mod_args, mod_kwargs
@@ -136,27 +137,6 @@ class arg_parser():
             },
             'ret_type': sign.return_annotation
         }
-        return func_dict
-
-    def __args2schema(self, func_name, inp_args):
-
-        args = []
-        kwargs = {}
-        kwargs_started = False
-        for i in range(len(inp_args)):
-            kwargs_found = re.match("^-(\\S+)=(\\S.+)$", inp_args[i])
-            if kwargs_found:
-                key, value = kwargs_found.groups()
-                kwargs[key] = {'value': value}
-                kwargs_started = True
-            else:
-                if kwargs_started:
-                    raise SyntaxError(
-                        f"positional argument follows keyword argument '{key}'")
-                else:
-                    args.append(inp_args[i])
-
-        func_dict = {func_name: {'args': args, 'kwargs': kwargs}}
         return func_dict
 
     def __doc(self, name):
@@ -213,9 +193,99 @@ class arg_parser():
 
     def __mult_repl(self, str_inp, replacements):
 
-        inp = str_inp.strip()
+        inp = str_inp.rstrip()
         if 'python' in inp:
             for key, value in replacements.items():
                 inp = inp.replace(key, value)
 
         return inp
+    
+###### ARG PARSER ######
+
+class arg_parser(gen_parser):
+
+    def __init__(self, inps=sys.argv):
+        super().__init__(inps)
+
+    def _parse_inps(self, inps):
+
+        inp_args = inps[1:]
+        head = 0
+        code_flow = OrderedDict()
+        for i in range(len(inp_args)+1):
+            if (i == len(inp_args)) or (head != i and inp_args[i].startswith("~")):
+                func_name = inp_args[head][1:]
+                func_args = inp_args[(head+1):i]
+                code_flow[func_name] = func_args
+                head = i
+
+        return code_flow
+    
+    def _inps2schema(self, def_func_name, argv):
+
+        args_schema = self.__args2schema(def_func_name, argv)
+        return args_schema
+
+    def __args2schema(self, func_name, inp_args):
+
+        args = []
+        kwargs = {}
+        kwargs_started = False
+        for i in range(len(inp_args)):
+            kwargs_found = re.match("^-(\\S+)=(\\S.+)$", inp_args[i])
+            if kwargs_found:
+                key, value = kwargs_found.groups()
+                kwargs[key] = value
+                kwargs_started = True
+            else:
+                if kwargs_started:
+                    raise SyntaxError(
+                        f"positional argument follows keyword argument '{key}'")
+                else:
+                    args.append(inp_args[i])
+
+        func_dict = {func_name: {'args': args, 'kwargs': kwargs}}
+        return func_dict
+
+###### CNF PARSER ######
+
+# class cnf_parser(gen_parser):
+
+#     def __init__(self, inps=sys.argv):
+#         super().__init__(inps)
+
+#     def _parse_inps(self, inps):
+    
+#         code_flow = {}
+#         inp_file = pathlib.Path(inps[1])
+
+#         if not inp_file.exists():
+#             raise FileNotFoundError(inp_file.absolute())
+        
+#         if inp_file.name.endswith(('.yml', '.yaml')):
+#             with open(inp_file.absolute(), 'r') as stream:
+#                 try:
+#                     cnfs2dict = yaml.load(stream, Loader=SafeLoader)
+#                 except yaml.YAMLError as err:
+#                     print(f'{err} in {inp_file.absolute()}')
+#         elif inp_file.name.endswith('.json'):
+#             with open(inp_file.absolute(), 'r') as file:
+#                 cnfs2dict = json.load(file)
+
+#         return OrderedDict(cnfs2dict) if cnfs2dict else cnfs2dict
+    
+#     def _inps2schema(self, def_func_name, argv):
+
+#         args_schema = self.__cnfs2schema(def_func_name, argv)
+#         return args_schema
+
+#     def __cnfs2schema(self, func_name, inp_args):
+
+#         if inp_args == None: inp_args = {'args': [], 'kwargs': {}}
+#         else:
+#             if 'args' not in inp_args:
+#                 inp_args.update({'args': []})
+#             if 'kwargs' not in inp_args:
+#                 inp_args.update({'kwargs': {}})
+#         func_dict = {func_name: inp_args}
+#         return func_dict

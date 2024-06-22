@@ -17,8 +17,8 @@
  |    the function returns the same arg value as type <list> 
  |     
  |    cmds : 
- |    1. python minimal_scripts/use_list.py ["Empty"] 
- |    2. python minimal_scripts/use_list.py -inp_list=["Empty"]  
+ |        1. python minimal_scripts/use_list.py ["Empty"] 
+ |        2. python minimal_scripts/use_list.py -inp_list=["Empty"]  
  |    
  | -> list (Returnable)
 

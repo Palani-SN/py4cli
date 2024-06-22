@@ -1,0 +1,9 @@
+{
+    "multi_args1": {
+        "args": [100, 100.0],
+        "kwargs": {
+            "inp_str": "from JSON",
+            "inp_bool": true
+        }
+    }
+}
