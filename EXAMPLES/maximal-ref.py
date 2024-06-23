@@ -46,7 +46,7 @@ class gen_parser:
 
     def __parse(self, inp):
 
-        reference = self.__preproc()
+        self.__ref = self.__preproc()
 
         inp_file = pathlib.Path(inp)
         if not inp_file.exists():
@@ -57,7 +57,7 @@ class gen_parser:
         else:
             parsed = self.__parse_json(inp_file)
 
-        self.__validate(inp_file, reference, parsed)
+        self.__validate(inp_file, parsed)
 
     def __parse_json(self, inp_file):
 
@@ -98,46 +98,99 @@ class gen_parser:
         for k, v in ord.items():
             if v == None:
                 v = {}
+            if 'args' not in v: v['args'] = []
+            if 'kwargs' not in v: v['kwargs'] = {}
             mod[k] = v
 
         return mod
     
-    def __validate(self, inp_file, reference, parsed):
+    def __validate(self, inp_file, parsed):
 
-        self.returned = OrderedDict()
+        self.inp = OrderedDict()
         actm = set(parsed.keys())
-        refm = set(reference.keys())
+        refm = set(self.__ref.keys())
         if actm.issubset(refm):
             for func, params in parsed.items():
-                schema = reference[func]
-                args = []
-                kwargs = self.__solve_schema(inp_file, func, schema, params)
-                self.returned[func] = getattr(self, func)(*args, **kwargs)
+                args, kwargs = self.__solve_schema(func, self.__ref[func], params)
+                if args != params['args']:
+                    raise ValueError(f"[{inp_file.absolute()}] : {func}/args - Got {params['args']}, Expected {args}, Kindly Check")
+                if kwargs != params['kwargs']:
+                    raise ValueError(f"[{inp_file.absolute()}] : {func}/kwargs - Got {params['kwargs']}, Expected {kwargs}, Kindly Check")
+                self.inp[func] = {'args': args, 'kwargs': kwargs}
         else:
             methods_available = sorted(list(refm))
             raise Exception(f"Undefined func names : {list(actm-refm)}, try using defined func names {methods_available} instead")
     
-    def __solve_schema(self, inp_file, func_name, func, inps):
+    def __solve_schema(self, func_name, func, inps):
 
+        mod_args = []
         mod_kwargs = {}
-        for key, val in inps.items():
-            var_name = key
-            type = func['kwargs'][key]['type']
-            mod_kwargs[key] = self.__type(inp_file, func_name, var_name, type, val)
+        kwargs_started = False
+        for i in range(len(func['args'])):
+            kwargs_found = func['args'][i] in inps['kwargs'].keys()
+            if kwargs_found:
+                var_name = func['args'][i]
+                type = func['kwargs'][var_name]['type']
+                val = inps['kwargs'][var_name]
+                mod_kwargs[var_name] = self.__type(func_name, var_name, type, val) 
+                kwargs_started = True
+            else:
+                if len(mod_args) != len(inps['args']):
+                    if kwargs_started:
+                        raise SyntaxError(
+                            f"positional argument follows keyword argument '{prev}'")
+                    else:
+                        var_name = func['args'][i]
+                        type = func['kwargs'][var_name]['type']
+                        val = inps['args'][i]
+                        mod_args.append(self.__type(func_name, var_name, type, val))
+            prev = func['args'][i]
 
-        return mod_kwargs
+        return mod_args, mod_kwargs
     
-    def __type(self, inp_file, func_name, var_name, dtype, value):
+    def __type(self, func_name, var_name, dtype, value):
 
         if dtype in [str, int, float, list, dict, bool, inspect._empty]:
-            if type(value) == dtype:
-                type_casted_value = value
+            casted, casted_value = self.__validate_and_typecast(dtype, value)
+            if casted:
+                type_casted_value = casted_value
             else:
-                raise ValueError(f"[{inp_file.absolute()}] : Expected '{dtype}' value for '{var_name}' in kwargs of method '{func_name}', got '{value}' of '{type(value)}' instead")
+                raise ValueError(f"Expected '{dtype}' value for '{var_name}' in kwargs of method '{func_name}', got '{value}' instead")
         else:
             raise Exception(f"Unsupported argument data type : '{dtype}', try using basic types (int, float, str, list, dict, bool) instead")
         
         return type_casted_value
+    
+    def __validate_and_typecast(self, dtype, value):
+
+        if type(value) == dtype:
+            return True, value
+        else:
+            return False, value
+
+        # if dtype in [int, float]:
+        #     try:
+        #         type_casted_value = dtype(value)
+        #         return True, type_casted_value
+        #     except ValueError as err:
+        #         return False, value
+        # elif dtype in [list, dict, bool]:
+        #     try:
+        #         type_casted_value = ast.literal_eval(value)
+        #         return (dtype == type(type_casted_value)), type_casted_value
+        #     except (SyntaxError, ValueError, Exception) as err:
+        #         return False, value
+        # elif dtype in [inspect._empty]:
+        #     type_casted_value = value
+        #     return True, type_casted_value
+
+    def _exec(self):
+
+        self.out = OrderedDict()
+        for func, params in self.inp.items():
+            args = params['args']
+            kwargs = params['kwargs']
+            self.out[func] = getattr(self, func)(*args, **kwargs)
     
 class vscaled_args(gen_parser):
 
@@ -337,9 +390,10 @@ if __name__ == '__main__':
 
     print(sys.argv)
     obj = vscaled_args('use_mod_json_cnf.json')
+    obj._exec()
     print("")
-    if obj.returned:
-        out_dict = obj.returned.copy()
-        print(json.dumps(out_dict, indent=2, sort_keys=False), type(obj.returned))
+    if obj.out:
+        out_dict = obj.out.copy()
+        print(json.dumps(out_dict, indent=2, sort_keys=False), type(obj.out))
     else:
         print(obj.out, type(obj.out))
