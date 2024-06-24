@@ -1,0 +1,1217 @@
+============================= test session starts =============================
+platform win32 -- Python 3.7.16, pytest-6.2.5, py-1.11.0, pluggy-1.2.0
+rootdir: D:\GitRepos\py4cli
+plugins: reporter-0.5.2, reporter-html1-0.8.2
+collected 127 items
+
+test_min_call.py .E.E....E.E....E.E....E.E....E.E....E.E....E.E......    [ 29%]
+test_min_os.py ......................................                    [ 59%]
+test_min_warn.py ...F.......                                             [ 68%]
+test_mod_call.py .E.E.E...                                               [ 73%]
+test_mod_os.py ...........................                               [ 94%]
+test_mod_warn.py .......                                                 [100%]
+
+=================================== ERRORS ====================================
+_______________ ERROR at teardown of test_single_int[arg0-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_int object at 0x000002752CAFB6C8>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <int>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 0
+ |    
+ |  Usage :
+ |    
+ |    inp_int is variable of type <int>  
+ |    any integer value can be passed for the argument, while the default is 0 
+ |    the function returns the same arg value as type <int> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py 10 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_int=10  
+ |    
+ | -> int (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+_______________ ERROR at teardown of test_single_int[arg1-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_int object at 0x000002752CB986C8>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <int>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 0
+ |    
+ |  Usage :
+ |    
+ |    inp_int is variable of type <int>  
+ |    any integer value can be passed for the argument, while the default is 0 
+ |    the function returns the same arg value as type <int> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py 10 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_int=10  
+ |    
+ | -> int (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_float[arg0-None] ______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_float object at 0x000002752CBC5508>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <float>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_float: float = 0.0
+ |    
+ |  Usage :
+ |    
+ |    inp_float is variable of type <float>  
+ |    any floating point value can be passed for the argument, while the default is 0.0 
+ |    the function returns the same arg value as type <float> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py 10.0 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_float=10.0  
+ |    
+ | -> float (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_float[arg1-None] ______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_float object at 0x000002752CB57B48>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <float>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_float: float = 0.0
+ |    
+ |  Usage :
+ |    
+ |    inp_float is variable of type <float>  
+ |    any floating point value can be passed for the argument, while the default is 0.0 
+ |    the function returns the same arg value as type <float> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py 10.0 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_float=10.0  
+ |    
+ | -> float (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+_______________ ERROR at teardown of test_single_str[arg0-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_str object at 0x000002752CBA8048>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <str>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_str: str = 'None'
+ |    
+ |  Usage :
+ |    
+ |    inp_str is variable of type <str>  
+ |    any string value can be passed for the argument, while the default is "None" 
+ |    the function returns the same arg value as type <str> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py Empty 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_str=Empty  
+ |    
+ | -> str (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+_______________ ERROR at teardown of test_single_str[arg1-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_str object at 0x000002752CB60CC8>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <str>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_str: str = 'None'
+ |    
+ |  Usage :
+ |    
+ |    inp_str is variable of type <str>  
+ |    any string value can be passed for the argument, while the default is "None" 
+ |    the function returns the same arg value as type <str> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py Empty 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_str=Empty  
+ |    
+ | -> str (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_list[arg0-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_list object at 0x000002752CB54048>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <list>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_list: list = [None]
+ |    
+ |  Usage :
+ |    
+ |    inp_list is variable of type <list>  
+ |    any list value can be passed for the argument, while the default is [None] 
+ |    the function returns the same arg value as type <list> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ["Empty"] 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_list=["Empty"]  
+ |    
+ | -> list (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_list[arg1-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_list object at 0x000002752CBC7648>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <list>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_list: list = [None]
+ |    
+ |  Usage :
+ |    
+ |    inp_list is variable of type <list>  
+ |    any list value can be passed for the argument, while the default is [None] 
+ |    the function returns the same arg value as type <list> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ["Empty"] 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_list=["Empty"]  
+ |    
+ | -> list (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_dict[arg0-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_dict object at 0x000002752CBB2F08>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <dict>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_dict: dict = {None: None}
+ |    
+ |  Usage :
+ |    
+ |    inp_dict is variable of type <dict>  
+ |    any dict value can be passed for the argument, while the default is {None: None} 
+ |    the function returns the same arg value as type <dict> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py {"Empty":"Empty"} 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_dict={"Empty":"Empty"}  
+ |    
+ | -> dict (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_dict[arg1-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_dict object at 0x000002752CB49EC8>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <dict>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_dict: dict = {None: None}
+ |    
+ |  Usage :
+ |    
+ |    inp_dict is variable of type <dict>  
+ |    any dict value can be passed for the argument, while the default is {None: None} 
+ |    the function returns the same arg value as type <dict> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py {"Empty":"Empty"} 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_dict={"Empty":"Empty"}  
+ |    
+ | -> dict (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_bool[arg0-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_bool object at 0x000002752CBB1708>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <bool>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is variable of type <bool>  
+ |    any bool value can be passed for the argument, while the default is False 
+ |    the function returns the same arg value as type <bool> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_bool=True  
+ |    
+ | -> bool (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_single_bool[arg1-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.single_bool object at 0x000002752CBC9A08>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with single argument of type <bool>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is variable of type <bool>  
+ |    any bool value can be passed for the argument, while the default is False 
+ |    the function returns the same arg value as type <bool> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_bool=True  
+ |    
+ | -> bool (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+_______________ ERROR at teardown of test_multi_args[arg0-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.multi_args object at 0x000002752CB65708>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with multiple arguments of different types  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 6
+ |   -inp_float: float = 6.0
+ |   -inp_str: str = 'Six'
+ |   -inp_list: list = [6, 6.0, 'Six']
+ |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    Six arguments of different data type can be passed  
+ |    any value of the respective data type can be passed for specific argument. for defaults refer above 
+ |    the function returns a dict containing all the arguments and its values. 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
+ |    
+ | -> dict (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual({})
+
+_______________ ERROR at teardown of test_multi_args[arg1-None] _______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.multi_args object at 0x000002752CB53A88>.returned
+
+test_min_call.py:126: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function with multiple arguments of different types  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 6
+ |   -inp_float: float = 6.0
+ |   -inp_str: str = 'Six'
+ |   -inp_list: list = [6, 6.0, 'Six']
+ |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    Six arguments of different data type can be passed  
+ |    any value of the respective data type can be passed for specific argument. for defaults refer above 
+ |    the function returns a dict containing all the arguments and its values. 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
+ |    
+ | -> dict (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual({})
+
+______________ ERROR at teardown of test_vscaled_args[arg0-None] ______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == OrderedDict()
+E        +  where OrderedDict() = <moderate_scripts.basic_usage.vscaled_args object at 0x000002752CBEA948>.returned
+
+test_mod_call.py:67: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Methods available for use, is listed below
+[
+  "~multi_args",
+  "~single_bool",
+  "~single_dict",
+  "~single_float",
+  "~single_int",
+  "~single_list",
+  "~single_str",
+  "~warn_no_support_typ_arg",
+  "~warn_on_arg_order",
+  "~warn_ret_type",
+  "~warn_wo_ret_typ_def"
+]
+
+['basic_usgae.py'] : Expected(None) != Actual(OrderedDict())
+
+______________ ERROR at teardown of test_vscaled_args[arg1-None] ______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == OrderedDict()
+E        +  where OrderedDict() = <moderate_scripts.basic_usage.vscaled_args object at 0x000002752CBDD208>.returned
+
+test_mod_call.py:67: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def multi_args 
+ |    
+ |  Description :
+ |    
+ |    example multi_args template function with multiple arguments of different types  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 6
+ |   -inp_float: float = 6.0
+ |   -inp_str: str = 'Six'
+ |   -inp_list: list = [6, 6.0, 'Six']
+ |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    Six arguments of different data type can be passed  
+ |    any value of the respective data type can be passed for specific argument. for defaults refer above 
+ |    the function returns a dict containing all the arguments and its values. 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~multi_args 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~multi_args -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
+ |    
+ | -> dict (Returnable)
+
+ | > def single_bool 
+ |    
+ |  Description :
+ |    
+ |    example single_bool template function with single argument of type <bool>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is variable of type <bool>  
+ |    any bool value can be passed for the argument, while the default is False 
+ |    the function returns the same arg value as type <bool> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_bool True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_bool -inp_bool=True  
+ |    
+ | -> bool (Returnable)
+
+ | > def single_dict 
+ |    
+ |  Description :
+ |    
+ |    example single_dict template function with single argument of type <dict>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_dict: dict = {None: None}
+ |    
+ |  Usage :
+ |    
+ |    inp_dict is variable of type <dict>  
+ |    any dict value can be passed for the argument, while the default is {None: None} 
+ |    the function returns the same arg value as type <dict> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_dict {'Empty':'Empty'} 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_dict -inp_dict={'Empty':'Empty'}  
+ |    
+ | -> dict (Returnable)
+
+ | > def single_float 
+ |    
+ |  Description :
+ |    
+ |    example single_float template function with single argument of type <float>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_float: float = 0.0
+ |    
+ |  Usage :
+ |    
+ |    inp_float is variable of type <float>  
+ |    any floating point value can be passed for the argument, while the default is 0.0 
+ |    the function returns the same arg value as type <float> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_float 10.0 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_float -inp_float=10.0  
+ |    
+ | -> float (Returnable)
+
+ | > def single_int 
+ |    
+ |  Description :
+ |    
+ |    example single_int template function with single argument of type <int>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 0
+ |    
+ |  Usage :
+ |    
+ |    inp_int is variable of type <int>  
+ |    any integer value can be passed for the argument, while the default is 0 
+ |    the function returns the same arg value as type <int> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_int 10 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_int -inp_int=10  
+ |    
+ | -> int (Returnable)
+
+ | > def single_list 
+ |    
+ |  Description :
+ |    
+ |    example single_list template function with single argument of type <list>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_list: list = [None]
+ |    
+ |  Usage :
+ |    
+ |    inp_list is variable of type <list>  
+ |    any list value can be passed for the argument, while the default is [None] 
+ |    the function returns the same arg value as type <list> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_list ['Empty'] 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_list -inp_list=['Empty']  
+ |    
+ | -> list (Returnable)
+
+ | > def single_str 
+ |    
+ |  Description :
+ |    
+ |    example single_str template function with single argument of type <str>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_str: str = 'None'
+ |    
+ |  Usage :
+ |    
+ |    inp_str is variable of type <str>  
+ |    any string value can be passed for the argument, while the default is "None" 
+ |    the function returns the same arg value as type <str> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_str "Empty" 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_str -inp_str="Empty"  
+ |    
+ | -> str (Returnable)
+
+ | > def warn_no_support_typ_arg 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_df: pandas.core.frame.DataFrame
+ |    
+ |  Usage :
+ |    
+ |    example defined for checking if exception is getting raised, will not return any output as the definition is not valid  
+ |    
+ | -> None (Returnable)
+
+ | > def warn_on_arg_order 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool1: bool
+ |   -inp_bool2: bool
+ |    
+ |  Usage :
+ |    
+ |    example defined for checking if exception is getting raised, in scenarios where arguments order is changed.  
+ |    
+ | -> tuple (Returnable)
+
+ | > def warn_ret_type 
+ |    
+ |  Description :
+ |    
+ |    example warn_ret_type template function for testing if warning is getting printed.  
+ |    return type warning will be printed if there is a mismatch between expected dtype and returned dtype. 
+ |    warning will only be printed and will not halt the execution flow.  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 0
+ |    
+ |  Usage :
+ |    
+ |    inp_int is variable of type <int>  
+ |    any int value can be passed for the argument, while the default is 0 
+ |    the function returns the same arg value as type <int> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_ret_type 10 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_ret_type -inp_int=10  
+ |    
+ | -> str (Returnable)
+
+ | > def warn_wo_ret_typ_def 
+ |    
+ |  Description :
+ |    
+ |    example warn_wo_ret_typ_def template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is specified with no dtype limitations as per definition  
+ |    any bool value can be passed for the argument 
+ |    the function returns the same arg value 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_wo_ret_typ_def True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_wo_ret_typ_def -inp_bool=True  
+ |    
+ | -> Any (Returnable)
+
+['basic_usage.py', '-h'] : Expected(None) != Actual(OrderedDict())
+
+______________ ERROR at teardown of test_vscaled_args[arg2-None] ______________
+
+    @pytest.fixture(autouse = True, scope="function")
+    def fix_function():
+    
+        global args_in
+        global OBJ
+        global returned
+    
+        yield
+    
+>       assert(returned == OBJ.returned)
+E       assert None == OrderedDict()
+E        +  where OrderedDict() = <moderate_scripts.basic_usage.vscaled_args object at 0x000002752CBFF948>.returned
+
+test_mod_call.py:67: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def multi_args 
+ |    
+ |  Description :
+ |    
+ |    example multi_args template function with multiple arguments of different types  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 6
+ |   -inp_float: float = 6.0
+ |   -inp_str: str = 'Six'
+ |   -inp_list: list = [6, 6.0, 'Six']
+ |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    Six arguments of different data type can be passed  
+ |    any value of the respective data type can be passed for specific argument. for defaults refer above 
+ |    the function returns a dict containing all the arguments and its values. 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~multi_args 10 10.0 Seven [10,10.0,'Seven'] {'int':10,'float':10.0,'str':'Seven'} True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~multi_args -inp_int=10 -inp_float=10.0 -inp_str=Seven -inp_list=[10,10.0,'Seven'] -inp_dict={'int':10,'float':10.0,'str':'Seven'} -inp_bool=True  
+ |    
+ | -> dict (Returnable)
+
+ | > def single_bool 
+ |    
+ |  Description :
+ |    
+ |    example single_bool template function with single argument of type <bool>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool: bool = False
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is variable of type <bool>  
+ |    any bool value can be passed for the argument, while the default is False 
+ |    the function returns the same arg value as type <bool> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_bool True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_bool -inp_bool=True  
+ |    
+ | -> bool (Returnable)
+
+ | > def single_dict 
+ |    
+ |  Description :
+ |    
+ |    example single_dict template function with single argument of type <dict>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_dict: dict = {None: None}
+ |    
+ |  Usage :
+ |    
+ |    inp_dict is variable of type <dict>  
+ |    any dict value can be passed for the argument, while the default is {None: None} 
+ |    the function returns the same arg value as type <dict> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_dict {'Empty':'Empty'} 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_dict -inp_dict={'Empty':'Empty'}  
+ |    
+ | -> dict (Returnable)
+
+ | > def single_float 
+ |    
+ |  Description :
+ |    
+ |    example single_float template function with single argument of type <float>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_float: float = 0.0
+ |    
+ |  Usage :
+ |    
+ |    inp_float is variable of type <float>  
+ |    any floating point value can be passed for the argument, while the default is 0.0 
+ |    the function returns the same arg value as type <float> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_float 10.0 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_float -inp_float=10.0  
+ |    
+ | -> float (Returnable)
+
+ | > def single_int 
+ |    
+ |  Description :
+ |    
+ |    example single_int template function with single argument of type <int>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 0
+ |    
+ |  Usage :
+ |    
+ |    inp_int is variable of type <int>  
+ |    any integer value can be passed for the argument, while the default is 0 
+ |    the function returns the same arg value as type <int> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_int 10 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_int -inp_int=10  
+ |    
+ | -> int (Returnable)
+
+ | > def single_list 
+ |    
+ |  Description :
+ |    
+ |    example single_list template function with single argument of type <list>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_list: list = [None]
+ |    
+ |  Usage :
+ |    
+ |    inp_list is variable of type <list>  
+ |    any list value can be passed for the argument, while the default is [None] 
+ |    the function returns the same arg value as type <list> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_list ['Empty'] 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_list -inp_list=['Empty']  
+ |    
+ | -> list (Returnable)
+
+ | > def single_str 
+ |    
+ |  Description :
+ |    
+ |    example single_str template function with single argument of type <str>  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_str: str = 'None'
+ |    
+ |  Usage :
+ |    
+ |    inp_str is variable of type <str>  
+ |    any string value can be passed for the argument, while the default is "None" 
+ |    the function returns the same arg value as type <str> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_str "Empty" 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~single_str -inp_str="Empty"  
+ |    
+ | -> str (Returnable)
+
+ | > def warn_no_support_typ_arg 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_df: pandas.core.frame.DataFrame
+ |    
+ |  Usage :
+ |    
+ |    example defined for checking if exception is getting raised, will not return any output as the definition is not valid  
+ |    
+ | -> None (Returnable)
+
+ | > def warn_on_arg_order 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool1: bool
+ |   -inp_bool2: bool
+ |    
+ |  Usage :
+ |    
+ |    example defined for checking if exception is getting raised, in scenarios where arguments order is changed.  
+ |    
+ | -> tuple (Returnable)
+
+ | > def warn_ret_type 
+ |    
+ |  Description :
+ |    
+ |    example warn_ret_type template function for testing if warning is getting printed.  
+ |    return type warning will be printed if there is a mismatch between expected dtype and returned dtype. 
+ |    warning will only be printed and will not halt the execution flow.  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_int: int = 0
+ |    
+ |  Usage :
+ |    
+ |    inp_int is variable of type <int>  
+ |    any int value can be passed for the argument, while the default is 0 
+ |    the function returns the same arg value as type <int> 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_ret_type 10 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_ret_type -inp_int=10  
+ |    
+ | -> str (Returnable)
+
+ | > def warn_wo_ret_typ_def 
+ |    
+ |  Description :
+ |    
+ |    example warn_wo_ret_typ_def template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is specified with no dtype limitations as per definition  
+ |    any bool value can be passed for the argument 
+ |    the function returns the same arg value 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_wo_ret_typ_def True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py ~warn_wo_ret_typ_def -inp_bool=True  
+ |    
+ | -> Any (Returnable)
+
+['basic_usage.py', '--help'] : Expected(None) != Actual(OrderedDict())
+
+================================== FAILURES ===================================
+__________________________ test_warn_wo_ret_typ_def1 __________________________
+
+    def test_warn_wo_ret_typ_def1():
+    
+        obj = warn_wo_ret_typ_def("basic_usage.py --help".split())
+>       assert(None == obj.returned)
+E       assert None == {}
+E        +  where {} = <minimal_scripts.basic_usage.warn_wo_ret_typ_def object at 0x000002752CB582C8>.returned
+
+test_min_warn.py:33: AssertionError
+---------------------------- Captured stdout call -----------------------------
+
+ | > def parse_args 
+ |    
+ |  Description :
+ |    
+ |    example parse_args template function for checking warnings  
+ |    
+ |  Arguments :
+ |    
+ |   -inp_bool
+ |    
+ |  Usage :
+ |    
+ |    inp_bool is specified with no dtype limitations as per definition  
+ |    any bool value can be passed for the argument 
+ |    the function returns the same arg value 
+ |     
+ |    cmds : 
+ |        1. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py True 
+ |        2. python D:\Softwares\miniconda3\envs\py4cli\lib\site-packages\pytest\__main__.py -inp_bool=True  
+ |    
+ | -> Any (Returnable)
+------ generated report: D:\GitRepos\py4cli\REPORTS\TestCaseResults.html ------
+=========================== short test summary info ===========================
+FAILED test_min_warn.py::test_warn_wo_ret_typ_def1 - assert None == {}
+ERROR test_min_call.py::test_single_int[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_single_int[arg1-None] - assert None == {}
+ERROR test_min_call.py::test_single_float[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_single_float[arg1-None] - assert None == {}
+ERROR test_min_call.py::test_single_str[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_single_str[arg1-None] - assert None == {}
+ERROR test_min_call.py::test_single_list[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_single_list[arg1-None] - assert None == {}
+ERROR test_min_call.py::test_single_dict[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_single_dict[arg1-None] - assert None == {}
+ERROR test_min_call.py::test_single_bool[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_single_bool[arg1-None] - assert None == {}
+ERROR test_min_call.py::test_multi_args[arg0-None] - assert None == {}
+ERROR test_min_call.py::test_multi_args[arg1-None] - assert None == {}
+ERROR test_mod_call.py::test_vscaled_args[arg0-None] - assert None == Ordered...
+ERROR test_mod_call.py::test_vscaled_args[arg1-None] - assert None == Ordered...
+ERROR test_mod_call.py::test_vscaled_args[arg2-None] - assert None == Ordered...
+================== 1 failed, 126 passed, 17 errors in 32.02s ==================

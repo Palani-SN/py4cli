@@ -17,9 +17,9 @@
  |    the function returns the same arg value as type <str> 
  |     
  |    cmds : 
- |    1. python minimal_scripts/use_str.py Empty 
- |    2. python minimal_scripts/use_str.py -inp_str=Empty  
+ |        1. python minimal_scripts/use_str.py Empty 
+ |        2. python minimal_scripts/use_str.py -inp_str=Empty  
  |    
  | -> str (Returnable)
 
-None <class 'NoneType'>
+{} <class 'dict'>

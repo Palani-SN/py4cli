@@ -4,4 +4,4 @@
   "single_list": [
     null
   ]
-} <class 'dict'>
+} <class 'collections.OrderedDict'>

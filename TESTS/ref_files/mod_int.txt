@@ -2,4 +2,4 @@
 
 {
   "single_int": 0
-} <class 'dict'>
+} <class 'collections.OrderedDict'>

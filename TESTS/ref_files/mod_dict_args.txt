@@ -4,4 +4,4 @@
   "single_dict": {
     "hello": "world"
   }
-} <class 'dict'>
+} <class 'collections.OrderedDict'>

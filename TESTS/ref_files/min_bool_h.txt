@@ -17,9 +17,9 @@
  |    the function returns the same arg value as type <bool> 
  |     
  |    cmds : 
- |    1. python minimal_scripts/use_bool.py True 
- |    2. python minimal_scripts/use_bool.py -inp_bool=True  
+ |        1. python minimal_scripts/use_bool.py True 
+ |        2. python minimal_scripts/use_bool.py -inp_bool=True  
  |    
  | -> bool (Returnable)
 
-None <class 'NoneType'>
+{} <class 'dict'>

@@ -2,4 +2,4 @@
 
 {
   "single_str": "hello"
-} <class 'dict'>
+} <class 'collections.OrderedDict'>

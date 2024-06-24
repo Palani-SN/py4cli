@@ -17,9 +17,9 @@
  |    the function returns the same arg value as type <float> 
  |     
  |    cmds : 
- |    1. python minimal_scripts/use_float.py 10.0 
- |    2. python minimal_scripts/use_float.py -inp_float=10.0  
+ |        1. python minimal_scripts/use_float.py 10.0 
+ |        2. python minimal_scripts/use_float.py -inp_float=10.0  
  |    
  | -> float (Returnable)
 
-None <class 'NoneType'>
+{} <class 'dict'>

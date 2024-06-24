@@ -17,4 +17,4 @@
     ],
     "inp_str": "Seven"
   }
-} <class 'dict'>
+} <class 'collections.OrderedDict'>

@@ -9,10 +9,10 @@ import json
 
 class arg_parser():
 
-    def __init__(self, argv=sys.argv):
+    def __init__(self, argv:list=sys.argv):
 
         methods = []
-        self.returned = None
+        self.returned = OrderedDict()
         for name, obj in inspect.getmembers(self, predicate=inspect.ismethod):
             if not name.startswith('_'):
                 methods.append(name)
@@ -40,7 +40,6 @@ class arg_parser():
             if not inv_set.issubset(def_set):
                 raise Exception(f"Undefined func names : {list(inv_set-def_set)}, try using defined func names {methods} instead")
 
-            self.returned = {}
             for func, argv in code_flow.items():
                 self.returned[func] = self.__solve_func(func, argv)
 
@@ -78,7 +77,7 @@ class arg_parser():
 
     def __validate_and_typecast(self, dtype, value):
 
-        if dtype == str:
+        if type(value) == dtype:
             return True, value
 
         if dtype in [int, float]:
@@ -110,7 +109,6 @@ class arg_parser():
         for key, val in inps['kwargs'].items():
             var_name = key
             type = func['kwargs'][key]['type']
-            val = val['value']
             mod_kwargs[key] = self.__type(func_name, var_name, type, val)
 
         return mod_args, mod_kwargs
@@ -147,7 +145,7 @@ class arg_parser():
             kwargs_found = re.match("^-(\\S+)=(\\S.+)$", inp_args[i])
             if kwargs_found:
                 key, value = kwargs_found.groups()
-                kwargs[key] = {'value': value}
+                kwargs[key] = value
                 kwargs_started = True
             else:
                 if kwargs_started:
@@ -213,7 +211,7 @@ class arg_parser():
 
     def __mult_repl(self, str_inp, replacements):
 
-        inp = str_inp.strip()
+        inp = str_inp.rstrip()
         if 'python' in inp:
             for key, value in replacements.items():
                 inp = inp.replace(key, value)

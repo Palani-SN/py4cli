@@ -2,4 +2,4 @@
 
 {
   "single_float": 0.0
-} <class 'dict'>
+} <class 'collections.OrderedDict'>
