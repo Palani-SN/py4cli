@@ -11,7 +11,7 @@ import json
 
 class cnf_parser:
 
-    def __init__(self, inp:str = sys.argv) -> None:
+    def __init__(self, inp=sys.argv) -> None:
         
         self.returned = OrderedDict()
         self.__parse(inp)
@@ -46,23 +46,32 @@ class cnf_parser:
 
         reference = self.__preproc()
 
-        if len(inp) == 2 and inp[1].endswith(('yml', 'json', 'yaml')):
+        if (type(inp) == list and len(inp) == 2):
 
-            inp_file = pathlib.Path(inp[1])
-            if not inp_file.exists():
-                raise FileNotFoundError(inp_file.absolute())
-            
-            if inp_file.name.endswith(('.yml', '.yaml')):
-                parsed = self.__parse_yml(inp_file)
-            else:
-                parsed = self.__parse_json(inp_file)
+            if inp[1] in ['-h', '--help']:
+                print(f"class : {self.__class__.__name__}")
+                for ref in reference.keys():
+                    self.__doc(ref)
 
-            self.__validate(inp_file, reference, parsed)
+            if (inp[1].endswith(('yml', 'json', 'yaml'))):
+                inp_file = pathlib.Path(inp[1])
+                self.__proc(reference, inp_file)
 
+        if (type(inp) == str and inp.endswith(('yml', 'json', 'yaml'))):
+            inp_file = pathlib.Path(inp)
+            self.__proc(reference, inp_file)
+
+    def __proc(self, reference, inp_file):
+
+        if not inp_file.exists():
+            raise FileNotFoundError(inp_file.absolute())
+        
+        if inp_file.name.endswith(('.yml', '.yaml')):
+            parsed = self.__parse_yml(inp_file)
         else:
+            parsed = self.__parse_json(inp_file)
 
-            for ref in reference.keys():
-                self.__doc(ref)
+        self.__validate(inp_file, reference, parsed)
 
     def __parse_json(self, inp_file):
 
