@@ -4,14 +4,14 @@ import inspect
 import __main__
 from collections import OrderedDict
 import pathlib
-
+from typing import Union
 import yaml
 from yaml.loader import SafeLoader
 import json
 
 class cnf_parser:
 
-    def __init__(self, inp=sys.argv) -> None:
+    def __init__(self, inp: Union[list, str] =sys.argv) -> None:
         
         self.returned = OrderedDict()
         self.__parse(inp)
@@ -146,7 +146,7 @@ class cnf_parser:
     def __type(self, inp_file, func_name, var_name, dtype, value):
 
         if dtype in [str, int, float, list, dict, bool, inspect._empty]:
-            if type(value) == dtype:
+            if (dtype == inspect._empty) or (type(value) == dtype):
                 type_casted_value = value
             else:
                 raise ValueError(f"[{inp_file.absolute()}] : Expected '{dtype}' value for '{var_name}' in kwargs of method '{func_name}', got '{value}' of '{type(value)}' instead")

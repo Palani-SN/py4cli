@@ -17,11 +17,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -44,11 +39,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -71,11 +61,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -98,11 +83,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -125,11 +105,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -152,11 +127,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,
@@ -179,11 +149,6 @@ class vscaled_args(cnf_parser):
         Six arguments of different data type can be passed
         any value of the respective data type can be passed for specific argument. for defaults refer above
         the function returns a dict containing all the arguments and its values.
-
-        cmds :
-        
-            1. python <__file__> ~<__func__> 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
-            2. python <__file__> ~<__func__> -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
         """
         return {
                 'inp_int': inp_int,

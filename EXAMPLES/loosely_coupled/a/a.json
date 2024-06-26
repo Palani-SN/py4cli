@@ -1,0 +1,6 @@
+{
+    "subclasses": {
+        "aa": "loosely_coupled\\a\\aa\\aa.json",
+        "ab": "loosely_coupled\\a\\ab\\ab.json"
+    }
+}

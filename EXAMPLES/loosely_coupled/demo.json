@@ -1,0 +1,6 @@
+{
+    "classes": {
+        "a": "loosely_coupled\\a\\a.json",
+        "b": "loosely_coupled\\b\\b.json"
+    }
+}
