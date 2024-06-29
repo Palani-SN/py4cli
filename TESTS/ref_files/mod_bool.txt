@@ -2,4 +2,4 @@
 
 {
   "single_bool": false
-} <class 'dict'>
+} <class 'collections.OrderedDict'>

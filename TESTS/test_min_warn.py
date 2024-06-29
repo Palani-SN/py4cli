@@ -1,5 +1,6 @@
 
 import re
+from collections import OrderedDict
 from minimal_scripts.basic_usage import warn_ret_type
 from minimal_scripts.basic_usage import warn_wo_ret_typ_def
 from minimal_scripts.basic_usage import warn_no_support_typ_arg
@@ -30,7 +31,7 @@ def test_warn_ret_type3():
 def test_warn_wo_ret_typ_def1():
 
     obj = warn_wo_ret_typ_def("basic_usage.py --help".split())
-    assert(None == obj.returned)
+    assert(OrderedDict() == obj.returned)
     print(obj.returned)
 
 def test_warn_wo_ret_typ_def2():

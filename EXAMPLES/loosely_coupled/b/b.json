@@ -1,0 +1,6 @@
+{
+    "subclasses": {
+        "ba": "loosely_coupled/b/ba/ba.json",
+        "bb": "loosely_coupled/b/bb/bb.json"
+    }
+}

@@ -7,10 +7,10 @@ import __main__
 
 class arg_parser():
 
-    def __init__(self, argv=sys.argv):
+    def __init__(self, argv:list=sys.argv):
 
         methods = []
-        self.returned = None
+        self.returned = {}
         for name, obj in inspect.getmembers(self, predicate=inspect.ismethod):
             if not name.startswith('_'):
                 methods.append(name)
@@ -19,7 +19,6 @@ class arg_parser():
         def_func_name = 'parse_args'
         if def_func_name in methods:
             if len(argv) == 2 and (argv[1] in ['-h', '--help']):
-                self.returned = None
                 self.__doc(def_func_name)
             else:
                 func_schema = self.__func2schema(def_func_name)
@@ -52,7 +51,7 @@ class arg_parser():
 
     def __validate_and_typecast(self, dtype, value):
 
-        if dtype == str:
+        if type(value) == dtype:
             return True, value
 
         if dtype in [int, float]:
@@ -84,7 +83,6 @@ class arg_parser():
         for key, val in inps['kwargs'].items():
             var_name = key
             type = func['kwargs'][key]['type']
-            val = val['value']
             mod_kwargs[key] = self.__type(var_name, type, val)
 
         return mod_args, mod_kwargs
@@ -121,7 +119,7 @@ class arg_parser():
             kwargs_found = re.match("^-(\\S+)=(\\S.+)$", inp_args[i])
             if kwargs_found:
                 key, value = kwargs_found.groups()
-                kwargs[key] = {'value': value}
+                kwargs[key] = value
                 kwargs_started = True
             else:
                 if kwargs_started:
@@ -187,7 +185,7 @@ class arg_parser():
 
     def __mult_repl(self, str_inp, replacements):
 
-        inp = str_inp.strip()
+        inp = str_inp.rstrip()
         if 'python' in inp:
             for key, value in replacements.items():
                 inp = inp.replace(key, value)

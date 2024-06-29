@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name="py4cli",
-    version="0.0.6",
+    version="0.0.8",
     description="python for command line interface development",
-    py_modules=["py4cli/minimal", "py4cli/moderate"],
+    py_modules=["py4cli/minimal", "py4cli/moderate", "py4cli/maximal"],
     package_dir={"": "SRCS"},
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -23,6 +23,7 @@ setup(
 
     install_requires = [
         "blessings ~= 1.7",
+        "PyYAML~=6.0.1"
     ],
 
     extras_require = {

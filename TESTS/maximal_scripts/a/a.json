@@ -1,0 +1,6 @@
+{
+    "subclasses": {
+        "aa": "maximal_scripts/a/aa/aa.json",
+        "ab": "maximal_scripts/a/ab/ab.json"
+    }
+}

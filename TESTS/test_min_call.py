@@ -10,56 +10,56 @@ from minimal_scripts.basic_usage import single_bool
 from minimal_scripts.basic_usage import multi_args
 
 int_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), 0),
     ("basic_usage.py 10".split(), 10),
     ("basic_usage.py -inp_int=10".split(), 10),
     ]
 
 float_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), 0.0),
     ("basic_usage.py 10.0".split(), 10.0),
     ("basic_usage.py -inp_float=10.0".split(), 10.0),
     ]
 
 str_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), "None"),
     ("basic_usage.py Empty".split(), 'Empty'),
     ("basic_usage.py -inp_str=Empty".split(), 'Empty'),
     ]
 
 list_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), [None]),
     ("basic_usage.py ['Empty']".split(), ['Empty']),
     ("basic_usage.py -inp_list=['Empty']".split(), ['Empty']),
     ]
 
 dict_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), {None:None}),
     ("basic_usage.py {'Empty':'Empty'}".split(), {'Empty':'Empty'}),
     ("basic_usage.py -inp_dict={'Empty':'Empty'}".split(), {'Empty':'Empty'}),
     ]
 
 bool_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), False),
     ("basic_usage.py True".split(), True),
     ("basic_usage.py -inp_bool=True".split(), True),
     ]
 
 multi_arg_vs_ret = [ 
-    ("basic_usage.py -h".split(), None),
-    ("basic_usage.py --help".split(), None),
+    ("basic_usage.py -h".split(), {}),
+    ("basic_usage.py --help".split(), {}),
     ("basic_usage.py".split(), {
                 'inp_int': 6,
                 'inp_float': 6.0,

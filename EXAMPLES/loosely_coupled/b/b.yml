@@ -1,0 +1,4 @@
+
+subclasses:
+  ba: loosely_coupled/b/ba/ba.yml
+  bb: loosely_coupled/b/bb/bb.yml

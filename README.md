@@ -95,8 +95,8 @@ if __name__ == '__main__':
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python D:\GitRepos\py4cli\EXAMPLES\use_minimal.py 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
- |    2. python D:\GitRepos\py4cli\EXAMPLES\use_minimal.py -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
+ |      1. python D:\GitRepos\py4cli\EXAMPLES\use_minimal.py 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+ |      2. python D:\GitRepos\py4cli\EXAMPLES\use_minimal.py -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
  |
  | -> dict (Returnable)
 
@@ -319,8 +319,8 @@ None <class 'NoneType'>
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args1 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
- |    2. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args1 -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
+ |      1. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args1 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+ |      2. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args1 -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
  |
  | -> dict (Returnable)
 
@@ -346,8 +346,8 @@ None <class 'NoneType'>
  |    the function returns a dict containing all the arguments and its values.
  |
  |    cmds :
- |    1. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args2 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
- |    2. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args2 -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
+ |      1. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args2 10 10.0 "Seven" "[10, 10.0, 'Seven']" "{'int':10, 'float':10.0, 'str':'Seven'}" True
+ |      2. python D:\GitRepos\py4cli\EXAMPLES\use_moderate.py ~multi_args2 -inp_int=10 -inp_float=10.0 -inp_str="Seven" -inp_list="[10, 10.0, 'Seven']" -inp_dict="{'int':10, 'float':10.0, 'str':'Seven'}" -inp_bool=True
  |
  | -> dict (Returnable)
 
@@ -406,9 +406,184 @@ output
 
 ```
 
-## Maximal (in progress)
+## Maximal
 
 - Horizontally scalable version of minimal arg parser, aimed at use case like, workflow development for testing & debug needs.
+- Sample code as shown below can read yml or json file configurations in specified type as per function signature. (refer **use_maximal.py** under **EXAMPLES/**)
+
+```python
+from py4cli.maximal import cnf_parser
+
+# Multiple arguments example
+
+class vscaled_args(cnf_parser):
+
+    # example multi_args template function with multiple arguments of different types
+    def multi_args1(self, 
+            inp_int: int = 6,
+            inp_float: float = 6.0,
+            inp_str: str = "Six",
+            inp_list: list = [6, 6.0, "Six"],
+            inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"},
+            inp_bool: bool = False) -> dict:
+        """
+        Six arguments of different data type can be passed
+        any value of the respective data type can be passed for specific argument. for defaults refer above
+        the function returns a dict containing all the arguments and its values.
+        """
+        return {
+                'inp_int': inp_int,
+                'inp_float': inp_float,
+                'inp_str': inp_str,
+                'inp_list': inp_list,
+                'inp_dict': inp_dict,
+                'inp_bool': inp_bool
+            }
+    
+    # example multi_args template function with multiple arguments of different types
+    def multi_args2(self, 
+            inp_int: int = 6,
+            inp_float: float = 6.0,
+            inp_str: str = "Six",
+            inp_list: list = [6, 6.0, "Six"],
+            inp_dict: dict = {'int': 6, 'float': 6.0, 'str': "Six"},
+            inp_bool: bool = False) -> dict:
+        """
+        Six arguments of different data type can be passed
+        any value of the respective data type can be passed for specific argument. for defaults refer above
+        the function returns a dict containing all the arguments and its values.
+        """
+        return {
+                'inp_int': inp_int,
+                'inp_float': inp_float,
+                'inp_str': inp_str,
+                'inp_list': inp_list,
+                'inp_dict': inp_dict,
+                'inp_bool': inp_bool
+            }
+
+if __name__ == '__main__':
+
+    import sys
+    import json
+
+    print(sys.argv)
+    obj = vscaled_args()
+    print("")
+    if obj.returned:
+        out_dict = obj.returned.copy()
+        print(json.dumps(out_dict, indent=2, sort_keys=False), type(obj.returned))
+    else:
+        print(obj.returned, type(obj.returned))
+
+```
+
+- To get help on how to use the script, execute **python use_maximal.py -h** or **python use_maximal.py --help** which will generate the doc content based on the comments in script as shown below.
+
+```output
+
+(examples) D:\GitRepos\py4cli\EXAMPLES>python use_maximal.py --help
+['use_maximal.py', '--help']
+class : vscaled_args
+
+ | > def multi_args1
+ |
+ |  Description :
+ |
+ |    example multi_args template function with multiple arguments of different types
+ |
+ |  Arguments :
+ |
+ |   -inp_int: int = 6
+ |   -inp_float: float = 6.0
+ |   -inp_str: str = 'Six'
+ |   -inp_list: list = [6, 6.0, 'Six']
+ |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
+ |   -inp_bool: bool = False
+ |
+ |  Usage :
+ |
+ |    Six arguments of different data type can be passed
+ |    any value of the respective data type can be passed for specific argument. for defaults refer above
+ |    the function returns a dict containing all the arguments and its values.
+ |
+ | -> dict (Returnable)
+
+ | > def multi_args2
+ |
+ |  Description :
+ |
+ |    example multi_args template function with multiple arguments of different types
+ |
+ |  Arguments :
+ |
+ |   -inp_int: int = 6
+ |   -inp_float: float = 6.0
+ |   -inp_str: str = 'Six'
+ |   -inp_list: list = [6, 6.0, 'Six']
+ |   -inp_dict: dict = {'int': 6, 'float': 6.0, 'str': 'Six'}
+ |   -inp_bool: bool = False
+ |
+ |  Usage :
+ |
+ |    Six arguments of different data type can be passed
+ |    any value of the respective data type can be passed for specific argument. for defaults refer above
+ |    the function returns a dict containing all the arguments and its values.
+ |
+ | -> dict (Returnable)
+
+OrderedDict() <class 'collections.OrderedDict'>
+
+```
+
+- The commands specified can be used to alter the values as yml or json file to the script. The methods can be selected with appropriate arguments as per definition, and the order of execution of the methods is also controllable. For illustration purpose only two methods [multi_args1, multi_args2] is defined which can be scaled to number of functions, as much as python supports.
+
+```
+output
+
+(py4cli) D:\GitRepos\py4cli\EXAMPLES>python use_maximal.py use_max.yml
+['use_maximal.py', 'use_max.yml']
+
+{
+  "multi_args1": {
+    "inp_int": 100,
+    "inp_float": 100.0,
+    "inp_str": "Hello from YML, to multi_args1",
+    "inp_list": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "inp_dict": {
+      "Hello": "World",
+      "from": "YML"
+    },
+    "inp_bool": true
+  },
+  "multi_args2": {
+    "inp_int": 100,
+    "inp_float": 100.0,
+    "inp_str": "Hello from YML, to multi_args2",
+    "inp_list": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "inp_dict": {
+      "Hello": "World",
+      "from": "YML"
+    },
+    "inp_bool": true
+  }
+} <class 'collections.OrderedDict'>
+
+```
 
 ## supported in windows & linux :
 

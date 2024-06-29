@@ -14,4 +14,4 @@ Methods available for use, is listed below
   "~warn_wo_ret_typ_def"
 ]
 
-None <class 'NoneType'>
+OrderedDict() <class 'collections.OrderedDict'>

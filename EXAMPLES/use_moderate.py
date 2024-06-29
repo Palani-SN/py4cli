@@ -203,6 +203,6 @@ if __name__ == '__main__':
     print("")
     if obj.returned:
         out_dict = obj.returned.copy()
-        print(json.dumps(out_dict, indent=2, sort_keys=True), type(obj.returned))
+        print(json.dumps(out_dict, indent=2, sort_keys=False), type(obj.returned))
     else:
         print(obj.returned, type(obj.returned))

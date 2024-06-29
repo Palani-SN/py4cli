@@ -1,0 +1,17 @@
+============================= test session starts =============================
+platform win32 -- Python 3.7.16, pytest-6.2.5, py-1.11.0, pluggy-1.2.0
+rootdir: D:\GitRepos\py4cli
+plugins: reporter-0.5.2, reporter-html1-0.8.2
+collected 153 items
+
+test_max_call.py .................                                       [ 11%]
+test_max_warn.py .........                                               [ 16%]
+test_min_call.py ......................................                  [ 41%]
+test_min_os.py ......................................                    [ 66%]
+test_min_warn.py ...........                                             [ 73%]
+test_mod_call.py ......                                                  [ 77%]
+test_mod_os.py ...........................                               [ 95%]
+test_mod_warn.py .......                                                 [100%]
+
+------ generated report: D:\GitRepos\py4cli\REPORTS\TestCaseResults.html ------
+============================ 153 passed in 26.04s =============================
