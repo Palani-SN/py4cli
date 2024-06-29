@@ -545,10 +545,10 @@ output
 ['use_maximal.py', 'use_max.yml']
 
 {
-  "multi_args7": {
+  "multi_args1": {
     "inp_int": 100,
     "inp_float": 100.0,
-    "inp_str": "Hello from YML, to multi_args7",
+    "inp_str": "Hello from YML, to multi_args1",
     "inp_list": [
       1,
       2,
@@ -563,10 +563,10 @@ output
     },
     "inp_bool": true
   },
-  "multi_args6": {
+  "multi_args2": {
     "inp_int": 100,
     "inp_float": 100.0,
-    "inp_str": "Hello from YML, to multi_args6",
+    "inp_str": "Hello from YML, to multi_args2",
     "inp_list": [
       1,
       2,
