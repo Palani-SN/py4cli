@@ -1,6 +1,6 @@
-============================= test session starts =============================
-platform win32 -- Python 3.7.16, pytest-6.2.5, py-1.11.0, pluggy-1.2.0
-rootdir: D:\GitRepos\py4cli
+============================= test session starts ==============================
+platform linux -- Python 3.7.16, pytest-6.2.5, py-1.11.0, pluggy-1.2.0
+rootdir: /mnt/d/GitRepos/py4cli
 plugins: reporter-0.5.2, reporter-html1-0.8.2
 collected 153 items
 
@@ -13,5 +13,5 @@ test_mod_call.py ......                                                  [ 77%]
 test_mod_os.py ...........................                               [ 95%]
 test_mod_warn.py .......                                                 [100%]
 
------- generated report: D:\GitRepos\py4cli\REPORTS\TestCaseResults.html ------
-============================ 153 passed in 27.29s =============================
+---- generated report: /mnt/d/GitRepos/py4cli/REPORTS/TestCaseResults.html -----
+============================= 153 passed in 53.31s =============================
