@@ -126,9 +126,9 @@ class cnf_parser:
                 args = []
                 kwargs = self.__solve_schema(inp_file, func, schema, params)
                 self.returned[func] = getattr(self, func)(*args, **kwargs)
-                if schema['ret_type'] != inspect._empty and type(self.returned) != schema['ret_type']:
+                if schema['ret_type'] != inspect._empty and type(self.returned[func]) != schema['ret_type']:
                     print(
-                        f"WARNING : '{func}' returns '{type(self.returned)}', but defined to return '{schema['ret_type']}'")
+                        f"WARNING : '{func}' returns '{type(self.returned[func])}', but defined to return '{schema['ret_type']}'")
         else:
             methods_available = sorted(list(refm))
             raise Exception(f"Undefined func names : {list(actm-refm)}, try using defined func names {methods_available} instead")
