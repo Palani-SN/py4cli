@@ -1,4 +1,4 @@
 
 subclasses:
-  aa: maximal_scripts\\a\\aa\\aa.yml
-  ab: maximal_scripts\\a\\ab\\ab.yml
+  aa: maximal_scripts/a/aa/aa.yml
+  ab: maximal_scripts/a/ab/ab.yml

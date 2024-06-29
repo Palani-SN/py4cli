@@ -1,6 +1,6 @@
 {
     "subclasses": {
-        "ba": "maximal_scripts\\b\\ba\\ba.json",
-        "bb": "maximal_scripts\\b\\bb\\bb.json"
+        "ba": "maximal_scripts/b/ba/ba.json",
+        "bb": "maximal_scripts/b/bb/bb.json"
     }
 }

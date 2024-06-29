@@ -23,6 +23,7 @@ setup(
 
     install_requires = [
         "blessings ~= 1.7",
+        "PyYAML~=6.0.1"
     ],
 
     extras_require = {

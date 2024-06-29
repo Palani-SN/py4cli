@@ -1,4 +1,4 @@
 
 subclasses:
-  aa: loosely_coupled\\a\\aa\\aa.yml
-  ab: loosely_coupled\\a\\ab\\ab.yml
+  aa: loosely_coupled/a/aa/aa.yml
+  ab: loosely_coupled/a/ab/ab.yml

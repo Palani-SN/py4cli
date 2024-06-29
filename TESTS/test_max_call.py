@@ -11,7 +11,7 @@ demo_arg_vs_ret = [
     ("demo.py".split(), OrderedDict()),
     ("demo.py -h".split(), OrderedDict()),
     ("demo.py --help".split(), OrderedDict()),
-    ("demo.py maximal_scripts\\demo.yml".split(), OrderedDict({
+    ("demo.py maximal_scripts/demo.yml".split(), OrderedDict({
             "classes": {
               "ret_a": {
                 "subclasses": {
@@ -121,7 +121,7 @@ demo_arg_vs_ret = [
           }
         )
     ),
-("demo.py maximal_scripts\\demo.json".split(), OrderedDict({
+("demo.py maximal_scripts/demo.json".split(), OrderedDict({
             "classes": {
               "ret_a": {
                 "subclasses": {

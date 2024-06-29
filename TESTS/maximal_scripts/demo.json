@@ -1,6 +1,6 @@
 {
     "classes": {
-        "a": "maximal_scripts\\a\\a.json",
-        "b": "maximal_scripts\\b\\b.json"
+        "a": "maximal_scripts/a/a.json",
+        "b": "maximal_scripts/b/b.json"
     }
 }
