@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="py4cli",
-    version="0.0.6",
+    version="0.0.7",
     description="python for command line interface development",
     py_modules=["py4cli/minimal", "py4cli/moderate"],
     package_dir={"": "SRCS"},

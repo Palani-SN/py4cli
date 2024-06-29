@@ -406,7 +406,7 @@ output
 
 ```
 
-## Maximal (in progress)
+## Maximal
 
 - Horizontally scalable version of minimal arg parser, aimed at use case like, workflow development for testing & debug needs.
 - Sample code as shown below can read yml or json file configurations in specified type as per function signature. (refer **use_maximal.py** under **EXAMPLES/**)
